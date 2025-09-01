@@ -50,7 +50,7 @@
 
     - FR7.3: Optimized Performance: The website must be built for speed on mobile networks, with lazy-loaded images and efficient data usage to prevent slow performance on campus Wi-Fi.
 
-## Non-Functional Requirements (NFRs)
+## Non-Functional Requirements for CampusLearn™
 
 ### 1. Performance
 - **NFR-P1 (Load Speed):**  
