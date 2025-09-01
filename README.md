@@ -35,19 +35,17 @@
 - ### 6. Mobile-Specific General Features
     - FR6.1: Interactive Campus Map: A touch-friendly, zoomable map integrated with the device's GPS to provide "blue dot" navigation showing the user's current location on campus.
 
-FR6.2: System-Wide Dark Mode: The theme toggle should switch the entire PWA to a true dark mode to save battery on OLED mobile screens and reduce eye strain.
+    - FR6.2: System-Wide Dark Mode: The theme toggle should switch the entire PWA to a true dark mode to save battery on OLED mobile screens and reduce eye strain.
 
-FR6.3: Offline Functionality: Core features like viewing downloaded PDFs, reading past messages, and drafting new questions should work without an internet connection, syncing once reconnected.
+    - FR6.3: Offline Functionality: Core features like viewing downloaded PDFs, reading past messages, and drafting new questions should work without an internet connection, syncing once reconnected.
 
-FR6.4: Mobile Gamification:
+    - FR6.4: Mobile Gamification:
+        - Achievement Pop-ups: Small, game-like notifications that appear at the top of the screen for earning badges (e.g., "Helping Hand - Helped 5 Peers!").
+        - Simple Leaderboards: Show top contributors for the week within a Module Hub to encourage participation.
 
-Achievement Pop-ups: Small, game-like notifications that appear at the top of the screen for earning badges (e.g., "Helping Hand - Helped 5 Peers!").
+- ### 7. Navigation & Performance (Crucial for Mobile)
+    - FR7.1: Bottom Navigation Bar: The primary navigation should be a standard bottom bar with icons for: Home, Messages, Modules, Map, Profile. This is easily reachable with one's thumb.
 
-Simple Leaderboards: Show top contributors for the week within a Module Hub to encourage participation.
+    - FR7.2: Gesture Navigation: Support for common gestures like swipe-to-go-back and pull-to-refresh lists and feeds.
 
-7. Navigation & Performance (Crucial for Mobile)
-FR7.1: Bottom Navigation Bar: The primary navigation should be a standard bottom bar with icons for: Home, Messages, Modules, Map, Profile. This is easily reachable with one's thumb.
-
-FR7.2: Gesture Navigation: Support for common gestures like swipe-to-go-back and pull-to-refresh lists and feeds.
-
-FR7.3: Optimized Performance: The website must be built for speed on mobile networks, with lazy-loaded images and efficient data usage to prevent slow performance on campus Wi-Fi.
+    - FR7.3: Optimized Performance: The website must be built for speed on mobile networks, with lazy-loaded images and efficient data usage to prevent slow performance on campus Wi-Fi.
