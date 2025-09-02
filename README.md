@@ -57,9 +57,9 @@ The following features, while valuable, are explicitly excluded from the initial
 - A detailed statistical progression dashboard(Leaderboard)
 
 ### Application Distribution:
-Development and distribution of a native iOS mobile application through the Apple App Store.
-Development and distribution of a native Android mobile application through the Google Play Store.
-Development and distribution of a native Desktop application for Windows or macOS.
+- Development and distribution of a native iOS mobile application through the Apple App Store.
+- Development and distribution of a native Android mobile application through the Google Play Store.
+- Development and distribution of a native Desktop application for Windows or macOS.
 
 ## Non-Functional Requirements for CampusLearn™
 
