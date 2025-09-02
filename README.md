@@ -39,10 +39,6 @@
 
     - FR6.3: Offline Functionality: Core features like viewing downloaded PDFs, reading past messages, and drafting new questions should work without an internet connection, syncing once reconnected.
 
-    - FR6.4: Mobile Gamification:
-        - Achievement Pop-ups: Small, game-like notifications that appear at the top of the screen for earning badges (e.g., "Helping Hand - Helped 5 Peers!").
-        - Simple Leaderboards: Show top contributors for the week within a Module Hub to encourage participation.
-
 - ### 7. Navigation & Performance (Crucial for Mobile)
     - FR7.1: Bottom Navigation Bar: The primary navigation should be a standard bottom bar with icons for: Home, Messages, Modules, Map, Profile. This is easily reachable with one's thumb.
 
