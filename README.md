@@ -44,6 +44,23 @@
 
     - FR7.3: Optimized Performance: The website must be built for speed on mobile networks, with lazy-loaded images and efficient data usage to prevent slow performance on campus Wi-Fi.
 
+## Out of Scope for Initial Release (v1.0)
+The following features, while valuable, are explicitly excluded from the initial project scope to ensure a focused and deliverable first version of the platform.
+
+### Gamification Features:
+- Experience Points (XP) & Leveling System
+- Badges, Achievements, and Trophies
+- Global and Module-Specific Leaderboards
+- "Boss Fight" Challenges with unique rewards
+- A virtual economy or currency system (e.g., CampusCoins)
+- A Reward Shop for spending virtual currency
+- A detailed statistical progression dashboard(Leaderboard)
+
+### Application Distribution:
+Development and distribution of a native iOS mobile application through the Apple App Store.
+Development and distribution of a native Android mobile application through the Google Play Store.
+Development and distribution of a native Desktop application for Windows or macOS.
+
 ## Non-Functional Requirements for CampusLearn™
 
 ### 1. Performance
