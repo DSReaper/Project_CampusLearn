@@ -37,8 +37,6 @@
 
     - FR6.2: System-Wide Dark Mode: The theme toggle should switch the entire PWA to a true dark mode to save battery on OLED mobile screens and reduce eye strain.
 
-    - FR6.3: Offline Functionality: Core features like viewing downloaded PDFs, reading past messages, and drafting new questions should work without an internet connection, syncing once reconnected.
-
 - ### 7. Navigation & Performance (Crucial for Mobile)
     - FR7.1: Bottom Navigation Bar: The primary navigation should be a standard bottom bar with icons for: Home, Messages, Modules, Map, Profile. This is easily reachable with one's thumb.
 
