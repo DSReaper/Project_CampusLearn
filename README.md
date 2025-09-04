@@ -2,7 +2,7 @@
 
 ## Functional Requirements for CampusLearn™
 - ### 1. User Management & Authentication (Mobile-Optimized)
-    - FR1.1: One-Tap Login: Integrate with the student's @belgiumcampus.ac.za Google account for seamless, secure authentication without remembering passwords.
+    - FR1.1: Easy Login: Integrate with the student's @belgiumcampus.ac.za Google account for seamless, secure authentication without remembering passwords.
 
     - FR1.2: Swipeable Profiles: Student and tutor profiles should be easy to view and edit on a mobile screen, with sections in swipeable cards.
 
