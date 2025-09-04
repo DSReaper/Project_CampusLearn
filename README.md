@@ -28,7 +28,7 @@
     - FR4.2: Notification Preferences: Users can finely tune what triggers a push notification (e.g., only when @mentioned, new direct messages, or responses to their questions).
 
 - ### 5. AI-Powered Chatbot (Floating Action Button)
-    - FR5.1: The AI chatbot should be accessible via a persistent, floating circular button at the bottom corner of the screen, mimicking popular mobile apps.
+    - FR5.1: The AI chatbot should be accessible via a persistent, floating circular button at the top corner of the screen, mimicking popular mobile apps.
 
     - FR5.2: Chat history with the AI tutor should be saved and synced across the user's devices.
 
