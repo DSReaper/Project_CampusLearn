@@ -21,3 +21,6 @@ Content-Type: application/json
   "Name": "Computer Science & IT",
   "Description": "Courses related to computer science, programming, and information technology"
 }
+
+Delete Cluster
+DELETE /api/clusters/5
