@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LearningMaterial",
+  "description": "Schema for learning material uploaded by students",
+  "type": "object",
+  "properties": {
+    "MaterialID": {
+      "type": "integer",
+      "description": "Primary key for learning material",
+      "minimum": 1
+    },
+    "Type": {
+      "type": "string",
+      "description": "Type of material (e.g. PDF, Video, Notes)",
+      "enum": ["PDF", "Video", "Notes", "Other"]
+    },
+    "Title": {
+      "type": "string",
+      "description": "Title of the material",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "URL": {
+      "type": "string",
+      "description": "URL where the material can be accessed",
+      "pattern": "^(http|https)://.+"
+    },
+    "StudentID": {
+      "type": "integer",
+      "description": "Foreign key reference to the student who uploaded it"
+    },
+    "UploadedAt": {
+      "type": "string",
+      "description": "Date when the material was uploaded",
+      "format": "date-time"
+    }
+  },
+  "required": ["MaterialID", "Type", "Title", "URL", "StudentID", "UploadedAt"],
+  "additionalProperties": false
+}

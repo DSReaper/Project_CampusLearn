@@ -1,0 +1,24 @@
+Create Tutor Expertise
+POST /api/tutorexpertise
+Content-Type: application/json
+{
+  "TutorID": 1,
+  "ModuleID": 101
+}
+
+Get All Tutor Expertise
+GET /api/tutorexpertise
+
+Get Tutor Expertise by ID
+GET /api/tutorexpertise/1/101
+(where 1 = TutorID, 101 = ModuleID)
+
+Update Tutor Expertise
+PUT /api/tutorexpertise/1/101
+Content-Type: application/json
+{
+  "ModuleID": 102
+}
+
+Delete Tutor Expertise
+DELETE /api/tutorexpertise/1/101

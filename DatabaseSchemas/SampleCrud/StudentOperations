@@ -1,0 +1,35 @@
+Create Student
+POST /api/students
+Content-Type: application/json
+{
+  "StudentID": 1,
+  "DegreeID": 101,
+  "FirstName": "Jane",
+  "LastName": "Doe",
+  "Email": "janedoe@example.com",
+  "Status": "Active",
+  "Online": true
+}
+
+Get All Students
+GET /api/students
+
+
+Get Student by ID
+GET /api/students/1
+
+Update Student
+
+PUT /api/students/1
+Content-Type: application/json
+{
+  "DegreeID": 102,
+  "FirstName": "Jane",
+  "LastName": "Doe",
+  "Email": "janedoe@example.com",
+  "Status": "Active",
+  "Online": false
+}
+
+Delete Student
+DELETE /api/students/1

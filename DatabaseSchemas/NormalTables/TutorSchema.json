@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tutor",
+  "description": "Schema for tutor entity (a student who acts as a tutor)",
+  "type": "object",
+  "properties": {
+    "TutorID": {
+      "type": "integer",
+      "description": "Primary key for tutor",
+      "minimum": 1
+    },
+    "StudentID": {
+      "type": "integer",
+      "description": "Foreign key reference to the Student"
+    }
+  },
+  "required": ["TutorID", "StudentID"],
+  "additionalProperties": false
+}
