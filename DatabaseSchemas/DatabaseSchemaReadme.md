@@ -1,4 +1,4 @@
-# Educational Database JSON Schemas
+# Database JSON Schemas
 This repository contains a set of enhanced JSON Schemas that define the structure and validation rules for an educational institution's database system, based on the provided Entity-Relationship Diagram (ERD).
 
 ## Overview
