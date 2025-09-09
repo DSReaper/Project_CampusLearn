@@ -1,0 +1,11 @@
+Assign Lecturer to Module
+POST /api/lecture-modules
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ModuleID": 205
+}
+
+Get Lecturer's Modules
+GET /api/lecturers/101/modules
