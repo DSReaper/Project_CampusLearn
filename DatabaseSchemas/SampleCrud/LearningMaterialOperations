@@ -1,0 +1,29 @@
+Create Learning Material
+POST /api/learningmaterials
+Content-Type: application/json
+{
+  "MaterialID": 1,
+  "Type": "PDF",
+  "Title": "Database Systems Lecture Notes",
+  "URL": "https://example.com/db-notes.pdf",
+  "StudentID": 5,
+  "UploadedAt": "2025-09-09T14:30:00Z"
+}
+
+Get All Learning Materials
+GET /api/learningmaterials
+
+Get Learning Material by ID
+GET /api/learningmaterials/1
+
+Update Learning Material
+PUT /api/learningmaterials/1
+Content-Type: application/json
+{
+  "Type": "PDF",
+  "Title": "Updated Database Systems Lecture Notes",
+  "URL": "https://example.com/updated-db-notes.pdf"
+}
+
+Delete Learning Material
+DELETE /api/learningmaterials/1

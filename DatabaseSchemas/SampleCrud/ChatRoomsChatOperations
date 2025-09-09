@@ -1,0 +1,28 @@
+Create Chat Message
+POST /api/chatroomchats
+Content-Type: application/json
+{
+  "ChatID": 1,
+  "ChatRoomID": 1,
+  "StudentID": 5,
+  "Body": "Does anyone understand the assignment requirements?",
+  "LearningMaterialID": null,
+  "CreatedAt": "2025-09-09T14:00:00Z"
+}
+
+Get All Chat Messages
+GET /api/chatroomchats
+
+Get Chat Message by ID
+GET /api/chatroomchats/1
+
+Update Chat Message
+PUT /api/chatroomchats/1
+Content-Type: application/json
+{
+  "Body": "I think the assignment is about REST API design.",
+  "LearningMaterialID": 3
+}
+
+Delete Chat Message
+DELETE /api/chatroomchats/1
