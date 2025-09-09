@@ -14,9 +14,9 @@
     "LecturerNo": {
       "type": "string",
       "description": "Unique lecturer identification number",
-      "pattern": "^LEC-[0-9]{5}$",
-      "minLength": 8,
-      "maxLength": 8
+      "pattern": "^[1-9][0-9]{5}$",
+      "minLength": 6,
+      "maxLength": 6
     },
     "FirstName": {
       "type": "string",
