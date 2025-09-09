@@ -78,7 +78,7 @@ Problem: *Modules Taught* contains multiple values → violates 1NF.
 |----------|----------|------------------|-----------|----------|
 | M01      | MLG381   | Machine Learning | C01       | D01      |
 
-✔ All non-key attributes depend directly on the primary key.
+All non-key attributes depend directly on the primary key.
 
 ---
 
