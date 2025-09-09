@@ -31,3 +31,13 @@ Three many-to-many relationship tables:
 - LecturerClassroom - Associates lecturers with classrooms
 - LecturerCluster - Connects lecturers to subject clusters
 All junction tables enforce foreign key constraints and prevent additional properties.
+
+## Validation Features
+These schemas implement comprehensive validation including:
+- Data type enforcement
+- Minimum/maximum values for integers
+- String pattern matching with regular expressions
+- Minimum/maximum length constraints
+- Enumeration validation for predefined values
+- Required field enforcement
+- Prevention of additional properties
