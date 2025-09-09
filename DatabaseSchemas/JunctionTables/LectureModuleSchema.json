@@ -1,16 +1,36 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "LectureModule",
+  "$id": "https://api.example.com/schemas/lecturer.json",
+  "title": "Lecturer",
+  "description": "A lecturer/teacher entity",
   "type": "object",
   "properties": {
     "LecturerID": {
       "type": "integer",
-      "description": "Composite primary key - Foreign key to Lecturer"
+      "description": "Primary key for lecturer",
+      "minimum": 1,
+      "maximum": 999999
     },
-    "ModuleID": {
-      "type": "integer",
-      "description": "Composite primary key - Foreign key to Module"
+    "LecturerNo": {
+      "type": "string",
+      "description": "Unique lecturer identification number",
+      "pattern": "^LEC-[0-9]{5}$",
+      "minLength": 8,
+      "maxLength": 8
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name of the lecturer",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name of the lecturer",
+      "minLength": 1,
+      "maxLength": 50
     }
   },
-  "required": ["LecturerID", "ModuleID"]
+  "required": ["LecturerID", "LecturerNo", "FirstName", "LastName"],
+  "additionalProperties": false
 }
