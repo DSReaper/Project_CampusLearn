@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Degree",
+  "description": "An academic degree program",
+  "type": "object",
+  "properties": {
+    "DegreeID": {
+      "type": "integer",
+      "description": "Primary key for degree",
+      "minimum": 1,
+      "maximum": 9999
+    },
+    "DegreeName": {
+      "type": "string",
+      "description": "Name of the degree program",
+      "minLength": 5,
+      "maxLength": 60
+    },
+    "NOFLevel": {
+      "type": "string",
+      "description": "Number of levels/years in the degree program",
+      "enum": ["5", "6", "7", "8"],
+      "default": "7"
+    }
+  },
+  "required": ["DegreeID", "DegreeName", "NOFLevel"],
+  "additionalProperties": false
+}

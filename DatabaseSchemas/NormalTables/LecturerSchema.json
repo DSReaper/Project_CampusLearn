@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lecturer",
+  "description": "A lecturer/teacher entity",
+  "type": "object",
+  "properties": {
+    "LecturerID": {
+      "type": "integer",
+      "description": "Primary key for lecturer",
+      "minimum": 1,
+      "maximum": 999999
+    },
+    "LecturerNo": {
+      "type": "string",
+      "description": "Unique lecturer identification number",
+      "pattern": "^[1-9][0-9]{5}$",
+      "minLength": 6,
+      "maxLength": 6
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name of the lecturer",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name of the lecturer",
+      "minLength": 1,
+      "maxLength": 50
+    }
+  },
+  "required": ["LecturerID", "LecturerNo", "FirstName", "LastName"],
+  "additionalProperties": false
+}

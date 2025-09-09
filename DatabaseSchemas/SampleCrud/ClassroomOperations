@@ -1,0 +1,24 @@
+Create Classroom
+POST /api/classrooms
+Content-Type: application/json
+
+{
+  "ClassroomName": "Phi"
+}
+
+Get All Classrooms
+GET /api/classrooms
+
+Get Classroom by ID
+GET /api/classrooms/12
+
+Update Classroom
+PUT /api/classrooms/12
+Content-Type: application/json
+
+{
+  "ClassroomName": "Iota"
+}
+
+Delete Classroom
+DELETE /api/classrooms/12

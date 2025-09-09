@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LectureModule",
+  "description": "Junction table linking lecturers to modules",
+  "type": "object",
+  "properties": {
+    "LecturerID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Lecturer",
+      "minimum": 1,
+      "maximum": 999999
+    },
+    "ModuleID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Module",
+      "minimum": 1,
+      "maximum": 999999
+    }
+  },
+  "required": ["LecturerID", "ModuleID"],
+  "additionalProperties": false
+}
