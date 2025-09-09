@@ -27,7 +27,7 @@ Problem: *Modules Taught* contains multiple values → violates 1NF.
 | L01        | MLG382   |
 | L01        | LPR281   |
 
-✔ Each attribute is atomic.
+Each attribute is atomic.
 
 ---
 
@@ -53,7 +53,7 @@ Problem: *Modules Taught* contains multiple values → violates 1NF.
 | CR01       | S10       | Member   | 2025-01-16 |
 | CR01       | S18       | Owner    | 2025-01-12 |
 
-✔ Non-key attributes depend on the full composite key.
+Non-key attributes depend on the full composite key.
 
 ---
 
