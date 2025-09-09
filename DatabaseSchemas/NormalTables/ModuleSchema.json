@@ -26,9 +26,9 @@
     "ModuleNo": {
       "type": "string",
       "description": "Module identification code",
-      "pattern": "^MOD-[A-Z0-9]{3}-[0-9]{3}$",
-      "minLength": 11,
-      "maxLength": 11
+      "pattern": "^[A-Z]{3}[0-9]{3}",
+      "minLength": 6,
+      "maxLength": 6
     },
     "ModuleName": {
       "type": "string",
