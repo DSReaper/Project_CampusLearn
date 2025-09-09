@@ -110,4 +110,4 @@ ChatRoomChats(ChatID, ChatRoomID, SenderStudentID, Body, LearningMaterialID, Cre
 
 ---
 
-![ERD](ERD/ERD.png)
+![ERD](images/ERD.png)
