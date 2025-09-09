@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChatRoom",
+  "description": "Schema for chat rooms",
+  "type": "object",
+  "properties": {
+    "ChatRoomID": {
+      "type": "integer",
+      "description": "Primary key for the chat message",
+      "minimum": 1
+    },
+    "ModuleID": {
+      "type": "integer",
+      "description": "Foreign key reference to Module"
+    },
+    "StudentID": {
+      "type": "integer",
+      "description": "Foreign key reference to Student (student who created the chatroom)"
+    },
+    "Title": {
+      "type": "string",
+      "description": "Chatroom title",
+      "minLength": 1,
+      "maxLength": 1000
+    }
+  },
+  "required": ["ChatRoomID", "ModuleID", "StudentID", "Title"],
+  "additionalProperties": false
+}

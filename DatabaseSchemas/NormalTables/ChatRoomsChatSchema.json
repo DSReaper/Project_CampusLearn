@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChatRoomChat",
+  "description": "Schema for chat messages inside chat rooms",
+  "type": "object",
+  "properties": {
+    "ChatID": {
+      "type": "integer",
+      "description": "Primary key for the chat message",
+      "minimum": 1
+    },
+    "ChatRoomID": {
+      "type": "integer",
+      "description": "Foreign key reference to ChatRoom"
+    },
+    "StudentID": {
+      "type": "integer",
+      "description": "Foreign key reference to Student (sender of the message)"
+    },
+    "Body": {
+      "type": "string",
+      "description": "The message content",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "LearningMaterialID": {
+      "type": ["integer", "null"],
+      "description": "Optional reference to LearningMaterial if attached"
+    },
+    "CreatedAt": {
+      "type": "string",
+      "description": "Timestamp when the message was created",
+      "format": "date-time"
+    }
+  },
+  "required": ["ChatID", "ChatRoomID", "StudentID", "Body", "CreatedAt"],
+  "additionalProperties": false
+}

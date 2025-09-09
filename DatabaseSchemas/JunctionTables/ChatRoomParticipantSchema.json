@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChatRoomParticipant",
+  "description": "Schema for bridge table between Student and Chatroom",
+  "type": "object",
+  "properties": {
+    "StudentID": {
+      "type": "integer",
+      "description": "Foreign key reference to Student (student who created the chatroom)"
+    },
+    "ChatRoomID": {
+      "type": "integer",
+      "description": "Primary key for the chat message",
+      "minimum": 1
+    },
+    "Role": {
+      "type": "string",
+      "description": "Student role",
+      "enum":["Creator", "Participant"]
+    },
+    "JoinedAt": {
+      "type": "string",
+      "description": "Timestamp when someone joined the chat",
+      "format": "date-time"
+    }
+  },
+  "required": ["StudentID", "ChatRoomID", "Role", "JoinedAt"],
+  "additionalProperties": false
+}

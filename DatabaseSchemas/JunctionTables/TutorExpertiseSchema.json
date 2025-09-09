@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TutorExpertise",
+  "description": "Bridge entity linking tutors with modules they can teach",
+  "type": "object",
+  "properties": {
+    "TutorID": {
+      "type": "integer",
+      "description": "Foreign key reference to Tutor"
+    },
+    "ModuleID": {
+      "type": "integer",
+      "description": "Foreign key reference to Module"
+    }
+  },
+  "required": ["TutorID", "ModuleID"],
+  "additionalProperties": false
+}
