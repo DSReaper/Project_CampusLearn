@@ -4,7 +4,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 
 ---
 
-## 🔹 Step 1: UNF → 1NF (Atomicity)
+## Step 1: UNF → 1NF (Atomicity)
 
 **UNF Example – Lecturer (repeating group):**
 
@@ -12,7 +12,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 |------------|------------|-----------|----------|-------------------|-----------------------------|
 | L01        | 896045     | Jan       | Moyo     | jmoyo@campus.ac.za| {MLG381, MLG382, LPR281}    |
 
-❌ Problem: *Modules Taught* contains multiple values → violates 1NF.  
+Problem: *Modules Taught* contains multiple values → violates 1NF.  
 
 **Conversion to 1NF (separate junction table):**
 
@@ -31,7 +31,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 
 ---
 
-## 🔹 Step 2: 1NF → 2NF (No Partial Dependencies)
+## Step 2: 1NF → 2NF (No Partial Dependencies)
 
 **Problematic 1NF Example – ChatRoomParticipant:**
 
@@ -40,7 +40,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 | CR01       | S10       | Member   | 2025-01-16 | John      |
 | CR01       | S18       | Owner    | 2025-01-12 | Sarah     |
 
-❌ *FirstName* depends only on `StudentID`, not the full key (`ChatRoomID`, `StudentID`).  
+ *FirstName* depends only on `StudentID`, not the full key (`ChatRoomID`, `StudentID`).  
 
 **Conversion to 2NF:**
 - `ChatRoomParticipant(ChatRoomID, StudentID, Role, JoinedAt)`  
@@ -57,7 +57,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 
 ---
 
-## 🔹 Step 3: 2NF → 3NF (No Transitive Dependencies)
+##  Step 3: 2NF → 3NF (No Transitive Dependencies)
 
 **2NF Example – Module table with embedded details:**
 
@@ -65,7 +65,7 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 |----------|----------|------------------|-----------|---------------|----------|------------|
 | M01      | MLG381   | Machine Learning | C01       | Mathematical  | D01      | BComp      |
 
-❌ `ClusterName` depends on `ClusterID` and `DegreeName` depends on `DegreeID` → transitive dependencies.
+ `ClusterName` depends on `ClusterID` and `DegreeName` depends on `DegreeID` → transitive dependencies.
 
 **Conversion to 3NF:**
 - `Module(ModuleID, ModuleNo, ModuleName, Description, ClusterID, DegreeID)`  
@@ -82,14 +82,14 @@ This document outlines the normalization process for the CampusLearn™ schema, 
 
 ---
 
-## 🔒 Integrity Rules
+## Integrity Rules
 - **Entity integrity:** Each table has a unique primary key.  
 - **Referential integrity:** Foreign keys maintain valid references (e.g., `Student.DegreeID → Degree.DegreeID`).  
 - **Domain integrity:** Constraints enforce unique identifiers (StudentNo, Email, ModuleNo) and valid categories (LearningMaterial.Type).
 
 ---
 
-## ✅ Final Normalized Relations (3NF)
+##  Final Normalized Relations (3NF)
 
 ```plaintext
 Student(StudentID, DegreeID, StudentNo, FirstName, LastName, Email, Status, Online)
