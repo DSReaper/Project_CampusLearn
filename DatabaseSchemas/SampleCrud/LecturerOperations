@@ -1,0 +1,28 @@
+Create Lecturer
+POST /api/lecturers
+Content-Type: application/json
+
+{
+  "LecturerNo": "600300",
+  "FirstName": "John",
+  "LastName": "Smith"
+}
+
+Get All Lecturers
+GET /api/lecturers
+
+Get Lecturer by ID
+GET /api/lecturers/101
+
+Update Lecturer
+PUT /api/lecturers/101
+Content-Type: application/json
+
+{
+  "LecturerNo": "600300",
+  "FirstName": "Jonathan",
+  "LastName": "Smith"
+}
+
+Delete Lecturer
+DELETE /api/lecturers/101
