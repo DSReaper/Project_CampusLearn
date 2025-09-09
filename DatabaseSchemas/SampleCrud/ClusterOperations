@@ -1,0 +1,23 @@
+Create Cluster
+POST /api/clusters
+Content-Type: application/json
+
+{
+  "Name": "Computer Science",
+  "Description": "Courses related to computer science and programming"
+}
+
+Get All Clusters
+GET /api/clusters
+
+Get Cluster by ID
+GET /api/clusters/5
+
+Update Cluster
+PUT /api/clusters/5
+Content-Type: application/json
+
+{
+  "Name": "Computer Science & IT",
+  "Description": "Courses related to computer science, programming, and information technology"
+}
