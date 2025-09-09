@@ -1,15 +1,23 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api.example.com/schemas/classroom.json",
   "title": "Classroom",
+  "description": "A physical or virtual classroom",
   "type": "object",
   "properties": {
     "ClassroomID": {
       "type": "integer",
-      "description": "Primary key for classroom"
+      "description": "Primary key for classroom",
+      "minimum": 1,
+      "maximum": 9999
     },
     "ClassroomName": {
-      "type": "string"
+      "type": "string",
+      "description": "Name or identifier of the classroom",
+      "minLength": 5,
+      "maxLength": 12
     }
   },
-  "required": ["ClassroomID", "ClassroomName"]
+  "required": ["ClassroomID", "ClassroomName"],
+  "additionalProperties": false
 }
