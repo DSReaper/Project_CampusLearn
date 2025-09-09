@@ -106,3 +106,8 @@ ChatRoom(ChatRoomID, ModuleID, CreatedByStudentID, Title, Description)
 ChatRoomParticipant(ChatRoomID, StudentID, Role, JoinedAt)
 LearningMaterial(MaterialID, Type, Title, URL, UploadedByStudentID, UploadedAt)
 ChatRoomChats(ChatID, ChatRoomID, SenderStudentID, Body, LearningMaterialID, CreatedAt)
+```
+
+---
+
+![ERD](ERD/ERD.png)
