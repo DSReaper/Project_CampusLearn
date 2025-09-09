@@ -9,3 +9,63 @@ Content-Type: application/json
 
 Get Lecturer's Modules
 GET /api/lecturers/101/modules
+
+Get Module's Lecturers
+GET /api/modules/205/lecturers
+
+Remove Lecturer from Module
+DELETE /api/lecture-modules
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ModuleID": 205
+}
+
+Assign Lecturer to Classroom
+POST /api/lecturer-classrooms
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ClassroomID": 12
+}
+
+Get Lecturer's Classrooms
+GET /api/lecturers/101/classrooms
+
+Get Classroom's Lecturers
+GET /api/classrooms/12/lecturers
+
+Remove Lecturer from Classroom
+DELETE /api/lecturer-classrooms
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ClassroomID": 12
+}
+
+Assign Lecturer to Cluster
+POST /api/lecturer-clusters
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ClusterID": 5
+}
+
+Get Lecturer's Clusters
+GET /api/lecturers/101/clusters
+
+Get Cluster's Lecturers
+GET /api/clusters/5/lecturers
+
+Remove Lecturer from Cluster
+DELETE /api/lecturer-clusters
+Content-Type: application/json
+
+{
+  "LecturerID": 101,
+  "ClusterID": 5
+}
