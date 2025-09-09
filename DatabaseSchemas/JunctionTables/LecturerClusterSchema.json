@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LecturerCluster",
+  "type": "object",
+  "properties": {
+    "LecturerID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Lecturer"
+    },
+    "ClusterID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Cluster"
+    }
+  },
+  "required": ["LecturerID", "ClusterID"]
+}

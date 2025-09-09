@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cluster",
+  "type": "object",
+  "properties": {
+    "ClusterID": {
+      "type": "integer",
+      "description": "Primary key for cluster"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "required": ["ClusterID", "Name"]
+}

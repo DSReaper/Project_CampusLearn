@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lecturer",
+  "type": "object",
+  "properties": {
+    "LecturerID": {
+      "type": "integer",
+      "description": "Primary key for lecturer"
+    },
+    "LecturerNo": {
+      "type": "string",
+      "description": "Unique lecturer number"
+    },
+    "FirstName": {
+      "type": "string"
+    },
+    "LastName": {
+      "type": "string"
+    }
+  },
+  "required": ["LecturerID", "LecturerNo", "FirstName", "LastName"]
+}

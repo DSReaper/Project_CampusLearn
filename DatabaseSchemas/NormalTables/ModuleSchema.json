@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Module",
+  "type": "object",
+  "properties": {
+    "ModuleID": {
+      "type": "integer",
+      "description": "Primary key for module"
+    },
+    "ClusterID": {
+      "type": "integer",
+      "description": "Foreign key to Cluster"
+    },
+    "DegreeID": {
+      "type": "integer",
+      "description": "Foreign key to Degree"
+    },
+    "ModuleNo": {
+      "type": "string"
+    },
+    "ModuleName": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    }
+  },
+  "required": ["ModuleID", "ClusterID", "DegreeID", "ModuleNo", "ModuleName"]
+}

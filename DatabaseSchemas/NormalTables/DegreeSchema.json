@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Degree",
+  "type": "object",
+  "properties": {
+    "DegreeID": {
+      "type": "integer",
+      "description": "Primary key for degree"
+    },
+    "DegreeName": {
+      "type": "string"
+    },
+    "NOFLevel": {
+      "type": "string",
+      "description": "Number of levels/Years"
+    }
+  },
+  "required": ["DegreeID", "DegreeName", "NOFLevel"]
+}

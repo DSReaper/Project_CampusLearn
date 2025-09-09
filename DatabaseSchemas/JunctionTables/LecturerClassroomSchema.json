@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LecturerClassroom",
+  "type": "object",
+  "properties": {
+    "LecturerID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Lecturer"
+    },
+    "ClassroomID": {
+      "type": "integer",
+      "description": "Composite primary key - Foreign key to Classroom"
+    }
+  },
+  "required": ["LecturerID", "ClassroomID"]
+}
