@@ -1,0 +1,23 @@
+Create Tutor
+POST /api/tutors
+Content-Type: application/json
+{
+  "TutorID": 1,
+  "StudentID": 5
+}
+
+Get All Tutors
+GET /api/tutors
+
+Get Tutor by ID
+GET /api/tutors/1
+
+Update Tutor
+PUT /api/tutors/1
+Content-Type: application/json
+{
+  "StudentID": 6
+}
+
+Delete Tutor
+DELETE /api/tutors/1

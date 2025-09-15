@@ -1,0 +1,27 @@
+Create ChatRoom
+POST /api/chatrooms
+Content-Type: application/json
+{
+  "ChatRoomID": 1,
+  "ModuleID": 101,
+  "StudentID": 1,
+  "Title": "Software Engineering Discussion"
+}
+
+Get All ChatRooms
+GET /api/chatrooms
+
+Get ChatRoom by ID
+GET /api/chatrooms/1
+
+Update ChatRoom
+PUT /api/chatrooms/1
+Content-Type: application/json
+{
+  "ModuleID": 101,
+  "StudentID": 1,
+  "Title": "Updated Software Engineering Discussion"
+}
+
+Delete ChatRoom
+DELETE /api/chatrooms/1

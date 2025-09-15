@@ -1,0 +1,26 @@
+Create ChatRoomParticipant
+POST /api/chatroomparticipants
+Content-Type: application/json
+{
+  "StudentID": 5,
+  "ChatRoomID": 1,
+  "Role": "Creator",
+  "JoinedAt": "2025-09-09T15:00:00Z"
+}
+
+Get All ChatRoom Participants
+GET /api/chatroomparticipants
+
+Get ChatRoom Participant by ID
+GET /api/chatroomparticipants/1/5
+(where 1 = ChatRoomID, 5 = StudentID)
+
+Update ChatRoomParticipant
+PUT /api/chatroomparticipants/1/5
+Content-Type: application/json
+{
+    "Role": "Participant"
+}
+
+Delete ChatRoom Participant
+DELETE /api/chatroomparticipants/1/5
