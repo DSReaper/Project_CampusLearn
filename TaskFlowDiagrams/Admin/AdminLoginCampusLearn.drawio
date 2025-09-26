@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0" version="28.2.5">
+  <diagram name="Page-1" id="ufOg6iHCkvu547cmRVjr">
+    <mxGraphModel dx="1098" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vYMBH0_JP5d8pap78SAL-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-1" target="vYMBH0_JP5d8pap78SAL-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-1" value="Start: Admin logs in" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-2" target="vYMBH0_JP5d8pap78SAL-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-2" value="Views Forums" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-4" target="vYMBH0_JP5d8pap78SAL-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-4" value="Admin proactively finds content to review&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-6" target="vYMBH0_JP5d8pap78SAL-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-6" value="Admin clicks on item to investigate context" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-8" target="vYMBH0_JP5d8pap78SAL-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-8" value="Reviews Comment, User History, Reports" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-15" value="Report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-12" target="vYMBH0_JP5d8pap78SAL-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-23" value="Lock" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-12" target="vYMBH0_JP5d8pap78SAL-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-12" value="Moderation Decision" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="410" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-14" target="vYMBH0_JP5d8pap78SAL-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-14" value="Report user for what the User did wrong&amp;nbsp;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-16" target="vYMBH0_JP5d8pap78SAL-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-16" value="Content is Hidden from public" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="620" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-18" target="vYMBH0_JP5d8pap78SAL-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-18" value="Log Action" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="710" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-20" value="End: Return to Forums" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="800" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-22" target="vYMBH0_JP5d8pap78SAL-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-22" value="Forum is locked an no new messages may be sent" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="540" y="710" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vYMBH0_JP5d8pap78SAL-25" value="Nothing" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vYMBH0_JP5d8pap78SAL-12" target="vYMBH0_JP5d8pap78SAL-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="680" as="sourcePoint" />
+            <mxPoint x="460" y="630" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="450" />
+              <mxPoint x="230" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

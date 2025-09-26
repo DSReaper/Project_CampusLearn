@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0" version="28.2.5">
+  <diagram name="Page-1" id="9d27QebGQuZVitYVLy8V">
+    <mxGraphModel dx="1098" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-1" target="WOtBp9gE6pbvejZ6KBke-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-1" value="Start: Admin Logs in" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-2" target="WOtBp9gE6pbvejZ6KBke-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-2" value="Clicks Create Forum" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="378" y="110" width="95" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-4" target="WOtBp9gE6pbvejZ6KBke-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-4" value="Composer interface Opens" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-6" target="WOtBp9gE6pbvejZ6KBke-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-6" value="Admin Defines Forum" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-8" target="WOtBp9gE6pbvejZ6KBke-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-8" value="Admin adds content: Titel, body, attachments, poll" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-10" target="WOtBp9gE6pbvejZ6KBke-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-10" value="Clicks Submit" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="470" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-12" target="WOtBp9gE6pbvejZ6KBke-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-12" value="Validates Forum" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-17" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-14" target="WOtBp9gE6pbvejZ6KBke-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-14" target="WOtBp9gE6pbvejZ6KBke-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-14" value="Validation and Checks pass?" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="373" y="670" width="105" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-16" target="WOtBp9gE6pbvejZ6KBke-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="450" />
+              <mxPoint x="240" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-16" value="Show Error message" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-19" target="WOtBp9gE6pbvejZ6KBke-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-19" value="Forum is published" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="770" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-21" target="WOtBp9gE6pbvejZ6KBke-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-21" value="Emails sent to users" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-23" value="End: Users see new forum" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="930" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
