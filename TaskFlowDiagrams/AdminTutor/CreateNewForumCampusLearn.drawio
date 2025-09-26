@@ -4,17 +4,18 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-1" target="WOtBp9gE6pbvejZ6KBke-2">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425.5" y="110" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="WOtBp9gE6pbvejZ6KBke-1" value="Start: Tutor Logs in" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="365" y="20" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-2" target="WOtBp9gE6pbvejZ6KBke-4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-2" value="Clicks Create Forum" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="378" y="110" width="95" height="80" as="geometry" />
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-29" target="WOtBp9gE6pbvejZ6KBke-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425.5" y="190" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="WOtBp9gE6pbvejZ6KBke-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-4" target="WOtBp9gE6pbvejZ6KBke-6">
           <mxGeometry relative="1" as="geometry" />
@@ -28,11 +29,10 @@
         <mxCell id="WOtBp9gE6pbvejZ6KBke-6" value="Tutor Defines Forum" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="365.5" y="310" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-10" target="WOtBp9gE6pbvejZ6KBke-12">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-10" value="Clicks Submit" style="rhombus;whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="385" y="480" width="80" height="80" as="geometry" />
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-30" target="WOtBp9gE6pbvejZ6KBke-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="560" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="WOtBp9gE6pbvejZ6KBke-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-12" target="WOtBp9gE6pbvejZ6KBke-14">
           <mxGeometry relative="1" as="geometry" />
@@ -75,11 +75,19 @@
         <mxCell id="WOtBp9gE6pbvejZ6KBke-23" value="End: Users see new forum" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="365" y="930" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-26" target="WOtBp9gE6pbvejZ6KBke-10">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="WOtBp9gE6pbvejZ6KBke-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="480" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="WOtBp9gE6pbvejZ6KBke-26" value="Admin Adds Content: Title, Body, Attachments, polls, etc." style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-26" value="Tutor Adds Content: Title, Body, Attachments, polls, etc." style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
           <mxGeometry x="335" y="400" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-29" value="Clicks create form&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WOtBp9gE6pbvejZ6KBke-30" value="Clicks submit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365.5" y="480" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

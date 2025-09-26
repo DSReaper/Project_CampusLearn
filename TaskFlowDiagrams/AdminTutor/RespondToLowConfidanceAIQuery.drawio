@@ -70,7 +70,7 @@
         <mxCell id="5eiBCOE_EwidVmI4TjJT-20" value="Query marked as Resolved" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="365" y="750" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="5eiBCOE_EwidVmI4TjJT-22" value="" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+        <mxCell id="5eiBCOE_EwidVmI4TjJT-22" value="End: Return to Dashboard" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="365" y="840" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
