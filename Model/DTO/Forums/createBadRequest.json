@@ -1,0 +1,4 @@
+{
+  "error": "Validation failed",
+  "details": ["Title must be between 1 and 1000 characters"]
+}

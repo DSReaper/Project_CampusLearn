@@ -1,0 +1,11 @@
+{
+  "message": "string",
+  "chatroom": {
+    "ChatRoomID": 1,
+    "ModuleID": 1,
+    "StudentID": 1,
+    "Title": "string",
+    "CreatedAt": "string",
+    "Status": "string"
+  }
+}
