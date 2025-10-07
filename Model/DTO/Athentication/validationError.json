@@ -1,0 +1,4 @@
+{
+  "error": "Validation failed",
+  "details": ["Email already exists", "Username too short"]
+}
