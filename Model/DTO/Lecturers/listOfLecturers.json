@@ -6,7 +6,7 @@
       "firstName": "string",
       "lastName": "string",
       "displayName": "string",
-      "email": "john.smith@university.edu",
+      "email": "string",
       "isOnline": true,
       "lastActive": "string"
     },
