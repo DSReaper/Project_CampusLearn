@@ -1,0 +1,4 @@
+{
+  "error": "Person not found",
+  "message": "No user found with ID {id}"
+}
