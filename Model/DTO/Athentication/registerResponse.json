@@ -6,6 +6,6 @@
     "email": "string",
     "role": "string",
     "displayName": "string",
-    "createdAt": "2025-10-07T10:30:00Z"
+    "createdAt": "{date}"
   }
 }

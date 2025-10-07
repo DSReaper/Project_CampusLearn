@@ -1,4 +1,4 @@
 {
-  "error": "Chatroom not found",
-  "message": "Chatroom with (ID ???)/(Name) does not exist"
+  "error": "Forum not found",
+  "message": "Forum with (ID ???)/(Name) does not exist"
 }

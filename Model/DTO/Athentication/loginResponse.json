@@ -7,6 +7,5 @@
     "email": "string",
     "role": "string",
     "displayName": "string"
-  },
-  "expiresIn": "24h"
+  }
 }
