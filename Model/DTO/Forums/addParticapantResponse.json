@@ -1,0 +1,9 @@
+{
+  "message": "Participant added successfully",
+  "participant": {
+    "ChatRoomID": 1,
+    "StudentID": 1,
+    "Role": "string",
+    "JoinedAt": "strong"
+  }
+}
