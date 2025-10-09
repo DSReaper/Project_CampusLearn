@@ -1,0 +1,11 @@
+{
+  "message": "User registered successfully",
+  "user": {
+    "id": "string",
+    "username": "string",
+    "email": "string",
+    "role": "string",
+    "displayName": "string",
+    "createdAt": "{date}"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "person": {
+    "id": 1,
+    "photo": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "displayName": "string",
+    "email": "string",
+    "lastActive": "date",
+    "joinDate": "date",
+    "department": "string",
+    "bio": "string",
+    "expertise": ["string"],
+    "contact": {
+      "email": "string",
+      "phone": "string",
+      "office": "string"
+    }
+  }
+}

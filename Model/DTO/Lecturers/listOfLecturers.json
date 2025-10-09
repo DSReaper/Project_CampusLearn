@@ -1,0 +1,34 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "photo": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "displayName": "string",
+      "email": "string",
+      "isOnline": true,
+      "lastActive": "string"
+    },
+    {
+      "id": 2,
+      "photo": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "displayName": "string",
+      "email": "string",
+      "isOnline": false,
+      "lastActive": "string"
+    },
+    {
+      "id": 3,
+      "photo": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "displayName": "string",
+      "email": "string",
+      "isOnline": true,
+      "lastActive": "string"
+    }
+  ]
+}

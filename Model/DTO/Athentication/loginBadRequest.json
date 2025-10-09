@@ -1,0 +1,4 @@
+{
+  "error": "Missing required fields",
+  "details": ["Email is required", "Password is required"]
+}
