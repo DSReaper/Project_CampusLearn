@@ -1,4 +1,3 @@
-// src/database/connection.js
 const { MongoClient } = require('mongodb');
 const { studentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
 
@@ -7,7 +6,7 @@ class MongoDBConnection {
     this.client = null;
     this.db = null;
     this.isConnected = false;
-    this.connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+    this.connectionString = process.env.MONGO_URL || 'http://localhost:3000';
     this.dbName = process.env.DB_NAME || 'student_service_db';
   }
 
