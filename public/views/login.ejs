@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title><%= typeof title !== 'undefined' ? title : 'CampusLearn — Login' %></title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/styles/loginstyle.css" />
+	</head>
+	<body>
+		<%- include('../partials/header') %>
+		<%- include('../partials/navbar') %>
+
+		<main class="auth-container">
+			<section class="card">
+				<h1 class="title">Welcome to CampusLearn</h1>
+				<p class="subtitle">Sign in with your @belgiumcampus.ac.za email</p>
+
+						<% if (flash && flash.error) { %>
+							<div class="alert" role="alert" aria-live="assertive"><%= flash.error %></div>
+						<% } %>
+
+						<form id="loginForm" class="form" autocomplete="on" novalidate>
+							<div class="field">
+								<label for="email">Email</label>
+								<input id="email" name="email" type="email" inputmode="email" placeholder="name@belgiumcampus.ac.za" required aria-describedby="email-hint" />
+								<small id="email-hint" class="hint">Use your @belgiumcampus.ac.za email address.</small>
+							</div>
+
+							<div class="field">
+								<label for="password">Password</label>
+								<input id="password" name="password" type="password" placeholder="Your password" required aria-describedby="password-hint" />
+								<small id="password-hint" class="hint">Minimum 8 characters recommended.</small>
+							</div>
+
+										<button type="submit" class="btn btn-primary" aria-label="Sign in">Sign in</button>
+
+										<% if (googleEnabled) { %>
+											<div class="meta" style="display:flex;align-items:center;gap:8px;">
+												<div style="height:1px;background:#1e2648;flex:1;"></div>
+												<span style="color:#aab0c6;font-size:.85rem;">or</span>
+												<div style="height:1px;background:#1e2648;flex:1;"></div>
+											</div>
+											<a href="/auth/google" class="btn btn-primary" aria-label="Continue with Google" style="display:block;text-align:center;background:#db4437;">
+												Continue with Google
+											</a>
+										<% } %>
+
+							<div id="formError" class="alert hidden" role="alert" aria-live="polite"></div>
+						</form>
+
+				<div class="meta">
+					<p class="hint">Single Sign-On with Google is planned. For now, use your campus email and password.</p>
+				</div>
+			</section>
+		</main>
+
+		<%- include('../partials/footer') %>
+
+		<script src="/javascript/login.js" defer></script>
+	</body>
+	</html>
+
