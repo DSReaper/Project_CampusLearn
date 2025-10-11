@@ -7,7 +7,7 @@ class MongoDBConnection {
     this.db = null;
     this.isConnected = false;
     this.connectionString = process.env.MONGO_URL || 'http://localhost:3000';
-    this.dbName = process.env.DB_NAME || 'student_service_db';
+    this.dbName = process.env.DB_NAME || 'campusLearnDB';
   }
 
   async connect() {
