@@ -1,12 +1,22 @@
 {
+  "name": "project_campuslearn",
+  "private": true,
+  "type": "commonjs",
   "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
+    "express-session": "^1.18.1",
+    "express": "^4.21.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "mongoose": "^8.19.1",
     "node": "^24.8.0",
     "nodemon": "^3.1.10"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "serve": "node server.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

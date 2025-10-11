@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= typeof title !== 'undefined' ? title : 'Dashboard — CampusLearn' %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/loginstyle.css" />
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <%- include('../partials/navbar') %>
+
+    <main class="auth-container">
+      <section class="card">
+        <h1 class="title">Hello, <%= (user && user.displayName) || 'Student' %></h1>
+        <p class="subtitle">You are signed in as <%= user && user.email %>.</p>
+        <div class="form" style="gap:10px;">
+          <a class="btn btn-primary" href="/logout">Logout</a>
+        </div>
+      </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>
