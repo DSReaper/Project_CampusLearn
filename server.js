@@ -31,10 +31,10 @@ app.use(
 		store: (MongoStore && process.env.MONGO_URL)
 			? MongoStore.create({ mongoUrl: process.env.MONGO_URL })
 			: undefined,
-		cookie: {
+			cookie: {
 			httpOnly: true,
 			sameSite: 'lax',
-			secure: !!process.env.SECURE_COOKIES, // set in production behind HTTPS
+				secure: process.env.SECURE_COOKIES === 'true', // opt-in only; keep false on localhost
 			maxAge: 1000 * 60 * 60 * 2 // 2 hours
 		}
 	})
@@ -99,7 +99,7 @@ app.get('/health', (_req, res) => {
 
 // Home redirect: if logged in -> dashboard; else -> login
 app.get('/', (req, res) => {
-	if (req.session.user) return res.redirect('/dashboard');
+	if (req.user || req.session.user) return res.redirect('/dashboard');
 	return res.redirect('/login');
 });
 
@@ -135,6 +135,7 @@ app.post('/api/auth/login', (req, res) => {
 	// For now accept any password for belgiumcampus emails. This is a stub only.
 	const validDomain = /@belgiumcampus\.ac\.za$/i.test(email);
 	if (!validDomain) {
+		console.warn('[LOGIN DENY] Non-campus email attempted:', email);
 		return res.status(401).json({ error: 'Unauthorized', details: ['Please use your @belgiumcampus.ac.za email'] });
 	}
 
@@ -145,14 +146,21 @@ app.post('/api/auth/login', (req, res) => {
 		.join(' ');
 
 		// Create session and return a mock token and user object
-			const user = { id: username, username, email, role: 'student', displayName };
-			req.login ? req.login(user, () => {}) : (req.session.user = user);
-
-		return res.status(200).json({
-			message: 'Login successful',
-			token: 'mock-token',
-			user
-		});
+		const user = { id: username, username, email, role: 'student', displayName };
+		if (req.login) {
+			req.login(user, (err) => {
+				if (err) {
+					console.error('[LOGIN ERROR] req.login failed:', err);
+					return res.status(500).json({ error: 'Server error' });
+				}
+				// Also mirror into req.session.user for templates/routes that read it
+				req.session.user = user;
+				return res.status(200).json({ message: 'Login successful', token: 'mock-token', user });
+			});
+		} else {
+			req.session.user = user;
+			return res.status(200).json({ message: 'Login successful', token: 'mock-token', user });
+		}
 });
 
 	// Logout
