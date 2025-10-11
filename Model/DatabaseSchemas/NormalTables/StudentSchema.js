@@ -1,4 +1,4 @@
-{
+const studentSchema = {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Student",
   "description": "Schema for student entity",
