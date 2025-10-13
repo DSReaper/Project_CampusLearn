@@ -22,6 +22,10 @@ app.use(express.json());
 // Route
 app.get('/', (_, res) => res.render('login'));
 
+app.get('/forgot', (req, res) => {
+  res.render('forgotpassword');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
