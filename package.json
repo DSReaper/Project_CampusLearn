@@ -17,8 +17,7 @@
     "selenium-webdriver": "^4.36.0"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "serve": "node server.js"
+    "start": "nodemon main.js"
   },
   "devDependencies": {
     "mocha": "^11.7.4",
