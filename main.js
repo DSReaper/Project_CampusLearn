@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const router = require('./Services/routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,8 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
 
-// Route
-app.get('/', (_, res) => res.render('login'));
+// Routes
+app.get('/', router);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
