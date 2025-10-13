@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'View', 'view', 'pages'));
 
-// Serve ALL static assets from /View so /css and /animation work
 app.use(express.static(path.join(__dirname, 'View')));
 app.use('/audio', express.static(path.join(__dirname, 'View', 'audio')));
 app.use('/icons', express.static(path.join(__dirname, 'View', 'icons')));
