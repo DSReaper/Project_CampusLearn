@@ -29,7 +29,7 @@ body.matrix .code-column {
 body.matrix .card h1 {
   background: linear-gradient(to right, var(--black) 0%, #00ff66 50%, var(--black) 100%);
   background-size: 200% auto;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -95,7 +95,7 @@ body.matrix .card h1 {
   display: inline-block;
   background: linear-gradient(to right, var(--black) 0%, var(--red) 50%, var(--black) 100%);
   background-size: 200% auto;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: redFlow 3s linear infinite;
 }
