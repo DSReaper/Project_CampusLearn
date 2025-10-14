@@ -16,6 +16,7 @@ class StudentRepository extends IStudentRepository {
     }
   }
 
+
   // find student by email and password
   async findByEmailAndPassword(email, password) {
     try {
