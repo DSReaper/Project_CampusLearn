@@ -11,7 +11,7 @@ const router = express()
 router.get('/login', (req, res) => {
     fs.readFile( __dirname + "login.ejs")
         .then(contents => {
-            res.setHeader("Content-Type", "text/html");
+            res.render(contents)
             res.writeHead(200);
             res.send(contents);
         }).catch(err => {
