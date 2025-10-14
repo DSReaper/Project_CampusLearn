@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (eyeClicks >= 10) {
         // Toggle Matrix mode on every 10-click streak
-        // (can be done multiple times) But why
+        // (can be done multiple times) ?But why?
       
         matrixMode = !matrixMode;
         eyeClicks = 0;

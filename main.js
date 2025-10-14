@@ -1,9 +1,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+require('dotenv').config();
+
+const MongoDBConnection = require('./Model/database/connection');
+const dbConnection = new MongoDBConnection();
+dbConnection.connect().catch(console.error);
+
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Views (EJS)
 app.set('view engine', 'ejs');

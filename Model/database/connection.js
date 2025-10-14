@@ -1,12 +1,12 @@
 const { MongoClient } = require('mongodb');
-const { studentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
+const { StudentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
 
 class MongoDBConnection {
   constructor() {
     this.client = null;
     this.db = null;
     this.isConnected = false;
-    this.connectionString = process.env.MONGO_URL || 'http://localhost:3000';
+    this.connectionString = process.env.MONGO_URL || 'mongodb://localhost:27017';
     this.dbName = process.env.DB_NAME || 'campusLearnDB';
   }
 
@@ -45,13 +45,13 @@ class MongoDBConnection {
       
       if (collections.length === 0) {
         await db.createCollection('students', {
-          validator: studentSchema
+          validator: StudentSchema
         });
         console.log('✅ Students collection created with schema validation');
       } else {
         await db.command({
           collMod: 'students',
-          validator: studentSchema
+          validator: StudentSchema
         });
         console.log('✅ Students collection updated with schema validation');
       }
