@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const { studentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
+const { StudentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
 
 class MongoDBConnection {
   constructor() {
@@ -45,13 +45,13 @@ class MongoDBConnection {
       
       if (collections.length === 0) {
         await db.createCollection('students', {
-          validator: studentSchema
+          validator: StudentSchema
         });
         console.log('✅ Students collection created with schema validation');
       } else {
         await db.command({
           collMod: 'students',
-          validator: studentSchema
+          validator: StudentSchema
         });
         console.log('✅ Students collection updated with schema validation');
       }
