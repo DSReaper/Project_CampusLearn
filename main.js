@@ -3,8 +3,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
-const db = require('./Model/database/connection');
-db();
+const MongoDBConnection = require('./Model/database/connection');
+const dbConnection = new MongoDBConnection();
+dbConnection.connect().catch(console.error);
 
 
 const app = express();
