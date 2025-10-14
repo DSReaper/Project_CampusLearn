@@ -6,7 +6,7 @@ class MongoDBConnection {
     this.client = null;
     this.db = null;
     this.isConnected = false;
-    this.connectionString = process.env.MONGO_URL || 'http://localhost:3000';
+    this.connectionString = process.env.MONGO_URL || 'mongodb://localhost:27017';
     this.dbName = process.env.DB_NAME || 'campusLearnDB';
   }
 
