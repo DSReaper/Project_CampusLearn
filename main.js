@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const db = require('./Model/database/connection');
-db.connect();
+db();
 
 
 const app = express();
