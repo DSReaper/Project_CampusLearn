@@ -6,7 +6,7 @@ dbConnection.connect().catch(console.error);
 
 const { login } = require('../Services/loginController');
 
-const router = express().Router();
+const router = express();
 
 app.get('/', (_, res) => res.render('login'));
 router.get('/login', (req, res) => res.render(contents));
