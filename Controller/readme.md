@@ -1,4 +1,4 @@
-## Login Controller
+## 1. Login Controller
 
 ### 📘 Introduction
 The provided code is a Node.js module that handles user authentication and login requests. It utilizes **MongoDB** to store user information and uses the **bcrypt** package for password hashing. The code is modular and scalable, making it easy to add new features or modify existing ones without disrupting overall functionality.
