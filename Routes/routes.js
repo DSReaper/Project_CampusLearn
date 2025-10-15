@@ -1,19 +1,14 @@
 const express = require('express'); 
+const { loginUser } = require('../Controller/loginController');
 
-const MongoDBConnection = require('../Model/database/connection');
-const dbConnection = new MongoDBConnection();
-dbConnection.connect().catch(console.error);
+const router = express.Router();
 
-const { login } = require('../Services/loginController');
+router.get('/', (_, res) => res.render('login'));
 
-const router = express().Router();
+router.get('/login', (req, res) => res.render('login'));
 
-app.get('/', (_, res) => res.render('login'));
-router.get('/login', (req, res) => res.render(contents));
+router.post('/login', loginUser);
 
-
-router.post('/login', login);
-
-app.get('/forgot', (req, res) => res.render('forgotpassword'));
+router.get('/forgot', (req, res) => res.render('forgotpassword'));
 
 module.exports = router;
