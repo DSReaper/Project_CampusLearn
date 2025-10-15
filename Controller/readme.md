@@ -22,17 +22,59 @@ The provided code is a Node.js module that handles user authentication and login
   - `lecturer_pattern` and `student_pattern` are regular expressions matching BelgiumCampus email domains.
 
 #### 🔐 Password Match
-- Matches given password with password retrieved from database
+- Matches the given password with the password retrieved from the database.
 
 #### 👥 User Retrieval
-- Functions to retrieve user data from MongoDB:
-  - `getUser: fetches a user by email and password.
+- Retrieves user data from MongoDB:
+  - get User: Fetches a user by email and password.
+
+---
+
+### 📥 Parameters
+
+- `req`: The HTTP request object, which contains the user's email and password.
+- `res`: The HTTP response object, which is used to send a redirect or an error message.
+
+---
+
+### 🔁 Return Value
+
+Returns a promise that resolves to an object with the following properties:
+
+- `status`: A string indicating the status of the login attempt (`"success"` or `"failure"`).
+- `redirectPath`: The path to redirect the user to if the login was successful. Only set if `status` is `"success"`.
+
+---
+
+### ✅ Preconditions
+
+1. The client must send an email and password in the request body.
+2. The email domain must match either `@belgiumcampus.ac.za` or `@student.belgiumcampus.ac.za`.
+3. A valid campus email and password must be provided.
+
+---
+
+### 📤 Postconditions
+
+1. If the login was successful, a redirect will be sent to the client.
+2. If the login failed, an error message will be sent to the client.
+
+---
+
+### ⚠️ Exceptions
+
+This function may throw the following exceptions:
+
+- `Error`: If there is an error connecting to the database or finding the user.
+- `TypeError`: If the request body does not contain an email or password.
 
 ---
 
 ### 📦 Dependencies
+
 - `mongodb`
 
 Install with:
+
 ```bash
 npm install mongodb
