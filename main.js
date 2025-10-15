@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 // Views (EJS)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'View', 'pages'));
+app.set('views', path.join(__dirname, 'View', 'view', 'pages'));
 
 app.use(express.static(path.join(__dirname, 'View')));
 app.use('/audio', express.static(path.join(__dirname, 'View', 'audio')));
