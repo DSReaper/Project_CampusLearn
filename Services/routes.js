@@ -1,25 +1,11 @@
 const express = require('express'); 
 const bodyParser = require('body-parser');
-const fs = require('fs').promises;
 
 const MongoDBConnection = require('../Model/database/connection');
 const dbConnection = new MongoDBConnection();
 dbConnection.connect().catch(console.error);
 
 const router = express()
-
-router.get('/login', (req, res) => {
-    fs.readFile( __dirname + "login.ejs")
-        .then(contents => {
-            res.render(contents)
-            res.writeHead(200);
-            res.send(contents);
-        }).catch(err => {
-            res.writeHead(500);
-            res.end(err);
-            return;
-        });
-});
 
 /*
     Email required -> client side
