@@ -4,17 +4,17 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const router = require('./Routes/routes');
-require('dotenv').config();
 
 const MongoDBConnection = require('./Model/database/connection');
 const dbConnection = new MongoDBConnection();
 dbConnection.connect().catch(console.error);
 
+require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 
 // Views (EJS)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'View', 'view', 'pages'));
+app.set('views', path.join(__dirname, 'View', 'pages'));
 
 app.use(express.static(path.join(__dirname, 'View')));
 app.use('/audio', express.static(path.join(__dirname, 'View', 'audio')));
