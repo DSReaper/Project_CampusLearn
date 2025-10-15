@@ -1,11 +1,6 @@
-const express = require('express'); 
-const bodyParser = require('body-parser');
-
 const MongoDBConnection = require('../Model/database/connection');
 const dbConnection = new MongoDBConnection();
 dbConnection.connect().catch(console.error);
-
-const router = express()
 
 /*
     Email required -> client side
@@ -15,7 +10,7 @@ const router = express()
     Valid campus email and password -> server side
 */
 
-router.post('/login', async (req, res) => {
+exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     //patterns for email validation
@@ -61,7 +56,4 @@ router.post('/login', async (req, res) => {
         console.error('Login error:', error);
         return res.status(500).send('Internal server error.');
     }
-
-});
-
-module.exports = router;
+}

@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const router = require('./Services/routes');
+const router = require('./Routes/routes');
 require('dotenv').config();
 
 const MongoDBConnection = require('./Model/database/connection');
@@ -25,16 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
 
-// Route
-app.get('/', (_, res) => res.render('login'));
-
-router.get('/login', (req, res) => {
-    res.render(contents)
-});
-
-app.get('/forgot', (req, res) => {
-  res.render('forgotpassword');
-});
+// Router middleware
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
