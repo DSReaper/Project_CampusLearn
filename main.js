@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const router = require('./Services/routes');
 require('dotenv').config();
 
 const MongoDBConnection = require('./Model/database/connection');
@@ -25,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
 
-// Route
-app.get('/', (_, res) => res.render('login'));
+// Routes
+app.get('/', router);
 
 app.get('/forgot', (req, res) => {
   res.render('forgotpassword');
