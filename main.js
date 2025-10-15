@@ -1,14 +1,13 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+
 const router = require('./Services/routes');
 require('dotenv').config();
 
 const MongoDBConnection = require('./Model/database/connection');
 const dbConnection = new MongoDBConnection();
 dbConnection.connect().catch(console.error);
-
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -26,8 +25,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
 
-// Routes
-app.get('/', router);
+// Route
+app.get('/', (_, res) => res.render('login'));
+
+router.get('/login', (req, res) => {
+    res.render(contents)
+});
 
 app.get('/forgot', (req, res) => {
   res.render('forgotpassword');
