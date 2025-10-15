@@ -30,6 +30,12 @@ const studentSchema = {
       "description": "Unique email address of the student",
       "pattern": "^.+@.+\\..+$"
     },
+    "Password": {
+      "type": "string",
+      "description": "Unique Password of the student",
+      "minLength": 8,
+      "maxLength": 100
+    },
     "Status": {
       "type": "string",
       "description": "Enrollment status",

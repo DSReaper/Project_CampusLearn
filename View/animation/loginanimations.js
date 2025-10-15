@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!codeBg) return;
 
   // Normal "IT code" lines
+  // Used for important snippets, SQL, commands, etc. !!!!!!!!
   const codeSnippets = [
     'for(let i=0;i<items.length;i++){}',
     'SELECT * FROM users WHERE id = ?;',
@@ -113,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (eyeClicks >= 10) {
         // Toggle Matrix mode on every 10-click streak
+        // (can be done multiple times) ?But why?
+      
         matrixMode = !matrixMode;
         eyeClicks = 0;
 
@@ -149,6 +152,7 @@ if (rememberBox) {
       rememberClicks = 0;
 
       // Play your sound from /audio folder
+      // Execute when feeling frustrated 
       const audio = new Audio('/audio/The Chain of Silence.mp3');
       audio.volume = 0.8;
       audio.play().catch(err => console.warn('Audio blocked:', err));
