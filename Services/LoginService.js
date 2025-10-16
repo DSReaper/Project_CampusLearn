@@ -1,9 +1,6 @@
 const { studentRepository } = require('../Repositories/StudentRepository');
 
 class loginService {
-    constructor(parameters) {
-        
-    }
 
     async Validation(email) {
         //patterns for email validation
@@ -20,6 +17,8 @@ class loginService {
         } else {
             return ('Invalid email domain. Please use a @belgiumcampus.ac.za or @student.belgiumcampus.ac.za email.');
         }
+
+        return role;
     }
 
     async Verification(email, password) {
