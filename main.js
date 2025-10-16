@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+
+const app = express();
+const router = require('./Routes/routes');
 
 const MongoDBConnection = require('./Model/database/connection');
 const dbConnection = new MongoDBConnection();
 dbConnection.connect().catch(console.error);
 
-
-const app = express();
+require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 
 // Views (EJS)
@@ -25,12 +26,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
 
-// Route
-app.get('/', (_, res) => res.render('login'));
+// Router middleware
+app.use('/', router);
 
-app.get('/forgot', (req, res) => {
-  res.render('forgotpassword');
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

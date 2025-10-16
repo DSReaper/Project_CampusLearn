@@ -6,10 +6,11 @@ const { Builder, By, until } = require('selenium-webdriver');
     async function testLogin(email, password, expectedMessage, messageSelector, shouldSucceed = true) {
         await driver.get('http://localhost:3000/login');
 
-        // Clear and fill in the fields
+        // Clear the fields
         await driver.findElement(By.name('email')).clear();
-        await driver.findElement(By.name('email')).sendKeys(email || '');
         await driver.findElement(By.name('password')).clear();
+
+        await driver.findElement(By.name('email')).sendKeys(email || '');
         await driver.findElement(By.name('password')).sendKeys(password || '');
 
         await driver.findElement(By.css('button[type="submit"]')).click();
@@ -36,7 +37,7 @@ const { Builder, By, until } = require('selenium-webdriver');
         await testLogin(
             '',
             'testpassword',
-            'Email is required',
+            'Email must be at least 8 characters long',
             '#errorMessage',
             false
         );
@@ -45,7 +46,7 @@ const { Builder, By, until } = require('selenium-webdriver');
         await testLogin(
             '577843@student.belgiumcampus.ac.za',
             '',
-            'Password is required',
+            'Password must be at least 8 characters long and include letters and numbers',
             '#errorMessage',
             false
         );
@@ -54,7 +55,7 @@ const { Builder, By, until } = require('selenium-webdriver');
         await testLogin(
             'user@gmail.com',
             'testpassword',
-            'Please use your @belgiumcampus.ac.za email',
+            'Invalid email domain. Please use a @belgiumcampus.ac.za or @student.belgiumcampus.ac.za email.',
             '#errorMessage',
             false
         );
