@@ -6,16 +6,22 @@
     Valid campus email and password -> server side
 */
 
-const { loginService } = require('../Services/LoginService');
+const { LoginService } = require('../Services/LoginService');
 
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-    loginService.Validation(email)
-    .then((loginService.Verification(email, password)).then((message) => {
-        res.status(200).json({ message: message });
-    }).catch((error) => {
-        res.status(400).json({ error: error.message });
-    }));
+    const loginService = new LoginService();
+
+    try {
+        const role = await loginService.Validation(email);
+
+        const message = await loginService.Verification(email, password);
+
+        res.status(200).json({ role: role, message: message });
+
+    } catch (error) {
+       res.status(500).json({ error: error.message }); 
+    }
 }
 
