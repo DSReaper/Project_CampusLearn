@@ -1,9 +1,17 @@
-const { askCampusLearn } = require("../Services/openaiClient");
+// Controller/chatController.js
+const {
+  askCampusLearnWithNavigation,
+} = require("../Services/openaiClient");
 
 const SYSTEM_PROMPT = `
 You are CampusLearn Chatbot for IT students.
 Give step-by-step, practical answers. Provide small runnable code snippets when relevant.
 Also help politely with non-technical academic questions.
+
+If the user asks to go/open/navigate to a page, call the "navigate" tool with one of:
+- "student_dashboard"  → Student Dashboard
+- "settings"           → Profile & Settings
+Do not invent other targets.
 `;
 
 function renderChat(req, res) {
@@ -16,16 +24,26 @@ async function chatAPI(req, res) {
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "Missing message" });
     }
-    const trimmed = history.slice(-8);
+
     const messages = [
       { role: "system", content: SYSTEM_PROMPT },
-      ...trimmed,
+      ...history.slice(-8),
       { role: "user", content: message },
     ];
-    const reply = await askCampusLearn(messages);
-    res.json({ reply });
+
+    // Use the function-calling path in the client
+    const result = await askCampusLearnWithNavigation(messages);
+
+    // If navigation action present, send it so the frontend redirects
+    if (result.action?.type === "navigate" && result.action.href) {
+      return res.json({ reply: result.reply, action: result.action });
+    }
+
+    // Otherwise just return the text reply
+    return res.json({ reply: result.reply || "No response." });
+
   } catch (err) {
-    console.error(err);
+    console.error("chatAPI error:", err);
     res.status(500).json({ error: "Chat failed." });
   }
 }

@@ -7,9 +7,13 @@ const router = express.Router();
 // Load Chatbot first (for testing)
 router.get('/', renderChat);
 
+
 // Chatbot routes
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
+
+router.get('/student/dashboard', (req, res) => res.render('studentDashboard'));
+router.get('/profile/settings',  (req, res) => res.render('profileSettings'));
 
 // Existing auth routes (still accessible)
 router.get('/login', (req, res) => res.render('login'));

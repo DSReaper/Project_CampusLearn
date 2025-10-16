@@ -37,89 +37,96 @@
       </div>
     </div>
   </div>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const msgs = document.getElementById("msgs");
-  const inp  = document.getElementById("inp");
-  const btn  = document.getElementById("send");
-  const clearBtn = document.getElementById("clearChat");
-  let history = [];
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const msgs = document.getElementById("msgs");
+    const inp  = document.getElementById("inp");
+    const btn  = document.getElementById("send");
+    const clearBtn = document.getElementById("clearChat");
+    let history = [];
 
-  // --- icons ---
-  const ROBOT_SVG = `
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M11 3h2v2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h3V3zm5 7.5a1.5 1.5 0 1 0-3.001-.001A1.5 1.5 0 0 0 16 10.5zm-7 0A1.5 1.5 0 1 0 6 10.5 1.5 1.5 0 0 0 9 10.5zm-2 5.5h10v1H7v-1z"/>
-  </svg>`;
-  const HUMAN_SVG = `
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
-  </svg>`;
+    // --- icons ---
+    const ROBOT_SVG = `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M11 3h2v2h3a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h3V3zm5 7.5a1.5 1.5 0 1 0-3.001-.001A1.5 1.5 0 0 0 16 10.5zm-7 0A1.5 1.5 0 1 0 6 10.5 1.5 1.5 0 0 0 9 10.5zm-2 5.5h10v1H7v-1z"/>
+    </svg>`;
+    const HUMAN_SVG = `
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+    </svg>`;
 
-  // --- one and only add() that injects avatars ---
-  function add(role, text) {
-    const m = document.createElement("div");
-    m.className = "msg " + (role === "user" ? "user" : "bot");
+    function add(role, text) {
+      const m = document.createElement("div");
+      m.className = "msg " + (role === "user" ? "user" : "bot");
 
-    const avatar = document.createElement("div");
-    avatar.className = "avatar";
-    avatar.innerHTML = role === "user" ? HUMAN_SVG : ROBOT_SVG;
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.innerHTML = role === "user" ? HUMAN_SVG : ROBOT_SVG;
 
-    const b = document.createElement("div");
-    b.className = "bubble";
-    b.textContent = text;
+      const b = document.createElement("div");
+      b.className = "bubble";
+      b.textContent = text;
 
-    if (role === "user") {         // user on the right
-      m.appendChild(b);
-      m.appendChild(avatar);
-    } else {                       // bot on the left
-      m.appendChild(avatar);
-      m.appendChild(b);
+      if (role === "user") {
+        m.appendChild(b);
+        m.appendChild(avatar);
+      } else {
+        m.appendChild(avatar);
+        m.appendChild(b);
+      }
+
+      msgs.appendChild(m);
+      msgs.scrollTop = msgs.scrollHeight;
     }
 
-    msgs.appendChild(m);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
+    async function sendNow() {
+      const val = inp.value.trim();
+      if (!val) return;
+      add("user", val);
+      inp.value = "";
+      btn.disabled = true;
+      try {
+        const r = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: val, history })
+        });
+        const data = await r.json();
 
-  async function sendNow() {
-    const val = inp.value.trim();
-    if (!val) return;
-    add("user", val);
-    inp.value = "";
-    btn.disabled = true;
-    try {
-      const r = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: val, history })
-      });
-      const data = await r.json();
-      const reply = data.reply || "No response.";
-      add("bot", reply); // << use 'bot', not 'assistant'
-      history.push({ role: "user", content: val }, { role: "assistant", content: reply });
-      history = history.slice(-8);
-    } catch (e) {
-      add("bot", "Request failed. Check server/logs.");
-    } finally {
-      btn.disabled = false;
+        // ✅ handle function-calling navigation here (inside sendNow)
+        if (data.action?.type === "navigate" && data.action.href) {
+          add("bot", data.reply || "Opening page…");
+          setTimeout(() => { window.location.href = data.action.href; }, 300);
+          return; // stop normal reply handling
+        }
+
+        const reply = data.reply || "No response.";
+        add("bot", reply);
+        history.push({ role: "user", content: val }, { role: "assistant", content: reply });
+        history = history.slice(-8);
+      } catch (e) {
+        add("bot", "Request failed. Check server/logs.");
+      } finally {
+        btn.disabled = false;
+      }
     }
-  }
 
-  function clearChat() {
-    msgs.innerHTML = "";
-    history = [];
-    add("bot", "Chat cleared. How can I help you next?");
-  }
+    function clearChat() {
+      msgs.innerHTML = "";
+      history = [];
+      add("bot", "Chat cleared. How can I help you next?");
+    }
 
-  // initial greeting via JS (so it has an avatar)
-  add("bot", "Hi! I’m ready — what can I help you with?");
+    // initial greeting via JS (so it has an avatar)
+    add("bot", "Hi! I’m ready — what can I help you with?");
 
-  // events
-  btn.addEventListener("click", sendNow);
-  inp.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendNow(); }
+    btn.addEventListener("click", sendNow);
+    inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendNow(); }
+    });
+    clearBtn?.addEventListener("click", clearChat);
   });
-  clearBtn?.addEventListener("click", clearChat);
-});
 </script>
+
 </body>
 </html>
