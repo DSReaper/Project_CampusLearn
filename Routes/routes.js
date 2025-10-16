@@ -18,6 +18,4 @@ router.get('/api/chat/chatroom', renderChat );
 
 router.post('/api/chat', chatAPI );
 
-
-
 module.exports = router;
