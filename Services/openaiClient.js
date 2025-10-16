@@ -3,7 +3,7 @@ const OpenAI = require("openai");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const { navigateToolDef, executeNavigate } = require("./tools.navigate");
+const { navigateToolDef, executeNavigate } = require("../Model/Navigation/navigationData/tools.navigate");
 
 const apiKey = process.env.OPENAI_API_KEY;
 const client = new OpenAI({ apiKey });

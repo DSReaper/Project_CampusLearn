@@ -1,4 +1,4 @@
-const { resolveTarget } = require("./navigation");
+const { resolveTarget } = require("../navigation/navigation");
 
 const navigateToolDef = {
   type: "function",
