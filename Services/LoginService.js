@@ -1,6 +1,6 @@
 const { studentRepository } = require('../Repositories/StudentRepository');
 
-class loginService {
+class LoginService {
 
     async Validation(email) {
         //patterns for email validation
@@ -31,4 +31,4 @@ class loginService {
     }
 }
  
-module.exports = { loginService };
+module.exports = { LoginService };
