@@ -18,6 +18,7 @@ router.post("/reset-password", resetPasswordController);
 // Dashboard routes
 router.get('/student/dashboard', (req, res) => res.render('studentDashboard'));
 router.get('/profile/settings', (req, res) => res.render('profileSettings'));
+router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 
 // Chatbot routes
 router.get('/chat', renderChat);
