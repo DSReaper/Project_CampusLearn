@@ -17,8 +17,6 @@ class MongoDBConnection {
       }
 
       this.client = new MongoClient(this.connectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         maxPoolSize: 10,
         serverSelectionTimeoutMS: 5000,
       });
