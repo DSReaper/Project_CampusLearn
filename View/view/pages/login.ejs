@@ -1,64 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/loginstyles.css">
-<link rel="alternate icon" href="/icons/favicon.ico" sizes="any">
-</head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/loginstyles.css" />
+    <link rel="alternate icon" href="/icons/favicon.ico" sizes="any" />
+  </head>
+  <body>
     <!-- Animated red code background -->
-        <div class="code-bg" id="codeBg" aria-hidden="true"></div>
+    <div class="code-bg" id="codeBg" aria-hidden="true"></div>
 
-        <div class="wrap">
-            <form class="card" id="loginForm" autocomplete="on" novalidate>
-                <h1>CampusLearn</h1>
-                <p class="sub">Sign in to your account</p>
+    <div class="wrap">
+      <form class="card" id="loginForm" autocomplete="on" novalidate>
+        <h1>CampusLearn</h1>
+        <p class="sub">Sign in to your account</p>
 
-
-                <div class="field">
-                <label for="email">Email</label>
-                <input class="input" 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="@belgiumcampus.ac.za"
-                    required
-                    minlength="8"
-                    title="Email must be at least 8 characters long"/>
-                </div>
-
-
-                <div class="field">
-                <label for="password">Password</label>
-                <input class="input" 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="••••••••"
-                    required
-                    minlength="8"
-                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                    title="Password must be at least 8 characters long and include letters and numbers"/>
-                <!-- Black eye icon that opens/closes -->
-                <svg id="togglePassword" class="toggle-password" viewBox="0 0 24 24" aria-label="Toggle password visibility" role="button" tabindex="0">
-                <path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/>
-                </svg>
-                </div>
-
-
-                <div class="row">
-                <label><input id="remember" type="checkbox" style="accent-color: var(--red)"> Remember me</label>
-                <a href="/forgot">Forgot password?</a>
-                </div>
-
-
-                <button class="btn" type="submit">Sign In</button>
-            </form>
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            class="input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="@belgiumcampus.ac.za"
+            required
+            minlength="8"
+            title="Email must be at least 8 characters long"
+          />
         </div>
 
-        <script src="/animation/loginanimations.js"></script>
-    </body>
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            class="input"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            required
+            minlength="8"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            title="Password must be at least 8 characters long and include letters and numbers"
+          />
+          <!-- Black eye icon that opens/closes -->
+          <svg
+            id="togglePassword"
+            class="toggle-password"
+            viewBox="0 0 24 24"
+            aria-label="Toggle password visibility"
+            role="button"
+            tabindex="0"
+          >
+            <path
+              d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
+            />
+          </svg>
+        </div>
+
+        <div class="row">
+          <label
+            ><input
+              id="remember"
+              type="checkbox"
+              style="accent-color: var(--red)"
+            />
+            Remember me</label
+          >
+          <a href="/forgot">Forgot password?</a>
+        </div>
+
+        <button class="btn" type="submit">Sign In</button>
+      </form>
+    </div>
+
+    <script src="/animation/loginanimations.js"></script>
+    <script src="/login/login.js"></script>
+  </body>
 </html>

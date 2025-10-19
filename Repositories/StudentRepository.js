@@ -1,33 +1,31 @@
-const IStudentRepository=require('./IStudentRepository')
-const MongoDBConnection = require('../Model/database/connection');
+"use strict";
+
+const IStudentRepository = require("./IStudentRepository");
+const MongoDBConnection = require("../Model/database/connection.js");
+const bcrypt = require("bcrypt");
 
 class StudentRepository extends IStudentRepository {
   constructor() {
     super();
-    this.dbConnection = new MongoDBConnection();
-    this.collection = null;
+    this.conn = new MongoDBConnection();
   }
 
-  async init() {
-    if (!this.collection) {
-      await this.dbConnection.connect();
-      const db = this.dbConnection.getDatabase();
-      this.collection = db.collection('Student');
-    }
-  }
-
-
-  // find student by email and password
   async findByEmailAndPassword(email, password) {
-    try {
-      await this.init();
-      const student = await this.collection.findOne({ Email: email, Password: password });
-      return student;
-    } catch (error) {
-      console.error('Error finding student by email and password:', error);
-      throw error;
-    }
+    await this.conn.connect();
+    const db = this.conn.getDatabase();
+    const student = await db.collection("students").findOne({ Email: email });
+
+    // if user not found, return null
+    if (!student || !student.Password) return null;
+
+    // compare plain password with hashed password
+    const isMatch = await bcrypt.compare(
+      String(password || ""),
+      student.Password
+    );
+    return isMatch ? student : null;
   }
 }
 
+// Export a single instance
 module.exports = new StudentRepository();
