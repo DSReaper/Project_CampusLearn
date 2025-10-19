@@ -1,0 +1,52 @@
+[
+  {
+    "StudentID": 578039,
+    "DegreeID": 301,
+    "FirstName": "Zac",
+    "LastName": "Myburgh",
+    "Email": "578039@student.belgiumcampus.ac.za",
+    "Password": "Zac@12345",
+    "Status": "Active",
+    "Online": true
+  },
+  {
+    "StudentID": 600836,
+    "DegreeID": 302,
+    "FirstName": "Kagiso",
+    "LastName": "Sebati",
+    "Email": "600836@student.belgiumcampus.ac.za",
+    "Password": "Kagiso@12345",
+    "Status": "Active",
+    "Online": false
+  },
+  {
+    "StudentID": 577639,
+    "DegreeID": 303,
+    "FirstName": "Manissha",
+    "LastName": "Packary",
+    "Email": "577639@student.belgiumcampus.ac.za",
+    "Password": "Manissha@12345",
+    "Status": "Inactive",
+    "Online": false
+  },
+  {
+    "StudentID": 600286,
+    "DegreeID": 304,
+    "FirstName": "Tiago",
+    "LastName": "Luiz",
+    "Email": "600286@student.belgiumcampus.ac.za",
+    "Password": "Tiago@12345",
+    "Status": "Active",
+    "Online": true
+  },
+  {
+    "StudentID": 578040,
+    "DegreeID": 305,
+    "FirstName": "Alex",
+    "LastName": "Smith",
+    "Email": "578040@student.belgiumcampus.ac.za",
+    "Password": "Alex@12345",
+    "Status": "Suspended",
+    "Online": false
+  }
+]

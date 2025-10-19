@@ -1,34 +1,27 @@
-const { studentRepository } = require('../Repositories/StudentRepository');
+"use strict";
+
+const studentRepository = require("../Repositories/StudentRepository");
 
 class LoginService {
+  async Validation(email) {
+    const lecturer_pattern = /^[^\s@]+@belgiumcampus\.ac\.za$/i;
+    const student_pattern = /^[^\s@]+@student\.belgiumcampus\.ac\.za$/i;
 
-    async Validation(email) {
-        //patterns for email validation
-        const lecturer_pattern = /^[^\s@]+@belgiumcampus\.ac\.za$/;
-        const student_pattern = /^[^\s@]+@student.belgiumcampus\.ac\.za$/;
- 
- 
-        //Check if email matches either pattern amnd identify user type
-        let role = null;
-        if (lecturer_pattern.test(email)) {
-            role = 'tutor';
-        } else if (student_pattern.test(email)) {
-            role = 'student';
-        } else {
-            return ('Invalid email domain. Please use a @belgiumcampus.ac.za or @student.belgiumcampus.ac.za email.');
-        }
+    if (lecturer_pattern.test(email)) return "tutor";
+    if (student_pattern.test(email)) return "student";
 
-        return role;
-    }
+    throw new Error(
+      "Invalid email domain. Use a valid @belgiumcampus.ac.za address."
+    );
+  }
 
-    async Verification(email, password) {
-        if (studentRepository.findByEmailAndPassword(email, password) == null) {
-            return "Incorrect password or email";
-        }
-        else{
-            return "login"
-        }
-    }
+  async Verification(email, password) {
+    const student = await studentRepository.findByEmailAndPassword(
+      email,
+      password
+    );
+    return student ? "login" : "Incorrect password or email";
+  }
 }
- 
+
 module.exports = { LoginService };
