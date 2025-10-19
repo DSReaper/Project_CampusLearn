@@ -20,6 +20,20 @@
         <h1>CampusLearn</h1>
         <p class="sub">Sign in to your account</p>
 
+        <!-- 🔴 Error message area -->
+        <p
+          id="loginError"
+          style="
+            display: none;
+            color: #ff4444;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            font-weight: 500;
+          "
+        >
+          <!-- Message inserted dynamically -->
+        </p>
+
         <div class="field">
           <label for="email">Email</label>
           <input
@@ -44,10 +58,10 @@
             placeholder="••••••••"
             required
             minlength="8"
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            pattern="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
             title="Password must be at least 8 characters long and include letters and numbers"
           />
-          <!-- Black eye icon that opens/closes -->
+          <!-- Black eye icon -->
           <svg
             id="togglePassword"
             class="toggle-password"
