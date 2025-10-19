@@ -10,7 +10,7 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
-    "mongodb": "^4.17.1",
+    "mongodb": "^6.20.0",
     "mongoose": "^8.19.1",
     "nodemon": "^3.1.10",
     "openai": "^6.3.0",
