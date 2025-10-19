@@ -1,3 +1,4 @@
+// View/login/login.js
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
   const email = document.getElementById("email");
@@ -23,22 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ email: emailVal, password: passwordVal }),
       });
 
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.message === "login") {
-        const target =
-          data.role === "tutor" ? "/profile/settings" : "/student/dashboard";
-        window.location.assign(target);
+        // 🔐 store tutor flag for this session only
+        if (data.role === "tutor") {
+          sessionStorage.setItem("isTutor", "1");
+        } else {
+          sessionStorage.removeItem("isTutor");
+        }
+        // Always go to student dashboard
+        window.location.assign("/student/dashboard");
       } else {
-        errorText.textContent =
-          data.error || data.message || "Invalid email or password.";
+        errorText.textContent = data.error || data.message || "Invalid email or password.";
         errorText.style.display = "block";
       }
     } catch (err) {

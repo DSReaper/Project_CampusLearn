@@ -1,1 +1,30 @@
-<h1>Student Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="/css/loginstyles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>CampusLearn Dashboard</h1>
+      <p id="roleMessage">Checking your role...</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const roleMsg = document.getElementById("roleMessage");
+      const isTutor = sessionStorage.getItem("isTutor") === "1";
+
+      if (isTutor) {
+        roleMsg.textContent = "🎓 Welcome Tutor — you have special access!";
+      } else {
+        roleMsg.textContent = "👩‍💻 Welcome Student — standard access only.";
+      }
+    });
+  </script>
+</body>
+</html>
