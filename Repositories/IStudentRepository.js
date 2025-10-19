@@ -1,12 +1,8 @@
-class IStudentRepository {
-  async init() {
-    throw new Error("Not implemented");
-  }
-  async findByEmail(email) {
-    throw new Error("Not implemented");
-  }
-  async createStudent(doc) {
-    throw new Error("Not implemented");
-  }
+class IStudentRepository{
+    async findByEmailAndPassword(email,password){
+        throw new Error("Method not implemented");
+    }
+
 }
-module.exports = IStudentRepository;
+
+module.exports=IStudentRepository;

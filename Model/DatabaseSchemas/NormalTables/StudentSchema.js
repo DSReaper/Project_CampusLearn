@@ -1,40 +1,51 @@
-// Relax numeric fields to accept int/long/double (Node inserts doubles by default)
-const StudentValidator = {
-  $jsonSchema: {
-    bsonType: "object",
-    required: [
-      "StudentID",
-      "DegreeID",
-      "FirstName",
-      "LastName",
-      "Email",
-      "PasswordHash",
-      "Status",
-      "Online",
-    ],
-    additionalProperties: false,
-    properties: {
-      StudentID: {
-        bsonType: ["int", "long", "double"],
-        description: "Student numeric ID",
-      },
-      DegreeID: {
-        bsonType: ["int", "long", "double"],
-        description: "Degree numeric ID",
-      },
-      FirstName: { bsonType: "string", minLength: 2, maxLength: 50 },
-      LastName: { bsonType: "string", minLength: 2, maxLength: 50 },
-      Email: {
-        bsonType: "string",
-        pattern: "^[0-9]+@student\\.belgiumcampus\\.ac\\.za$",
-      },
-      PasswordHash: { bsonType: "string", minLength: 20, maxLength: 200 },
-      Status: { bsonType: "string", enum: ["Active", "Inactive", "Suspended"] },
-      Online: { bsonType: "bool" },
-      CreatedAt: { bsonType: "date" },
-      UpdatedAt: { bsonType: "date" },
+const studentSchema = {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Student",
+  "description": "Schema for student entity",
+  "type": "object",
+  "properties": {
+    "StudentID": {
+      "type": "integer",
+      "description": "Primary key for student",
+      "minimum": 1
     },
+    "DegreeID": {
+      "type": "integer",
+      "description": "Foreign key reference to Degree"
+    },
+    "FirstName": {
+      "type": "string",
+      "description": "First name of the student",
+      "minLength": 2,
+      "maxLength": 50
+    },
+    "LastName": {
+      "type": "string",
+      "description": "Last name of the student",
+      "minLength": 2,
+      "maxLength": 50
+    },
+    "Email": {
+      "type": "string",
+      "description": "Unique email address of the student",
+      "pattern": "^.+@.+\\..+$"
+    },
+    "Password": {
+      "type": "string",
+      "description": "Unique Password of the student",
+      "minLength": 8,
+      "maxLength": 100
+    },
+    "Status": {
+      "type": "string",
+      "description": "Enrollment status",
+      "enum": ["Active", "Inactive", "Suspended"]
+    },
+    "Online": {
+      "type": "boolean",
+      "description": "Whether the student is currently online"
+    }
   },
-};
-
-module.exports = { StudentValidator };
+  "required": ["StudentID", "DegreeID", "FirstName", "LastName", "Email", "Status", "Online"],
+  "additionalProperties": false
+}

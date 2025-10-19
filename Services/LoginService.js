@@ -1,27 +1,34 @@
-const bcrypt = require("bcrypt");
-const StudentRepo = require("../Repositories/StudentRepository");
+const { studentRepository } = require('../Repositories/StudentRepository');
 
 class LoginService {
-  async Validation(email) {
-    // domain rule
-    if (!/@student\.belgiumcampus\.ac\.za$/i.test(email)) {
-        throw new Error("Email must be @student.belgiumcampus.ac.za");
+
+    async Validation(email) {
+        //patterns for email validation
+        const lecturer_pattern = /^[^\s@]+@belgiumcampus\.ac\.za$/;
+        const student_pattern = /^[^\s@]+@student.belgiumcampus\.ac\.za$/;
+ 
+ 
+        //Check if email matches either pattern amnd identify user type
+        let role = null;
+        if (lecturer_pattern.test(email)) {
+            role = 'tutor';
+        } else if (student_pattern.test(email)) {
+            role = 'student';
+        } else {
+            return ('Invalid email domain. Please use a @belgiumcampus.ac.za or @student.belgiumcampus.ac.za email.');
+        }
+
+        return role;
     }
-    const student = await StudentRepo.findByEmail(email);
-    if (!student) throw new Error("Account not found");
-    // Return a role if you store one; else infer
-    return student.Role || "student";
-  }
 
-  async Verification(email, password) {
-    const student = await StudentRepo.findByEmail(email);
-    if (!student) throw new Error("Invalid credentials");
-    if (!student.PasswordHash) throw new Error("Account not set up correctly");
-
-    const ok = await bcrypt.compare(password, student.PasswordHash);
-    if (!ok) throw new Error("Invalid credentials");
-    return "Login successful";
-  }
+    async Verification(email, password) {
+        if (studentRepository.findByEmailAndPassword(email, password) == null) {
+            return "Incorrect password or email";
+        }
+        else{
+            return "login"
+        }
+    }
 }
-
+ 
 module.exports = { LoginService };
