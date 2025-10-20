@@ -6,9 +6,8 @@ const MongoDBConnection = require("../Model/database/connection.js");
 const { ObjectId } = require("mongodb");
 
 const CHATROOMS_JSON = path.resolve("Model/data/chatrooms.json");
-const DEFAULT_CREATOR = "578039";
 
-// Only allow fields in the schema
+// Only allow fields in your schema
 const ALLOWED_KEYS = new Set([
   "name",
   "description",
@@ -45,8 +44,8 @@ function processCreatorField(doc) {
       throw new Error(`Invalid createdBy ObjectId: "${doc.createdBy}"`);
     }
   } else if (!doc.createdBy) {
-    // Use default creator if none provided
-    doc.createdBy = new ObjectId(DEFAULT_CREATOR);
+    // Try to get a student from the database to use as creator
+    throw new Error('createdBy field is required');
   }
 }
 
@@ -99,13 +98,18 @@ function stripUnknownKeys(doc) {
     await conn.connect();
     const db = conn.getDatabase();
     const col = db.collection("chatrooms");
-    console.log("✅ Connected to database");
+    console.log("✅ Connected to chatrooms collection");
 
-    // Check if chatrooms collection exists and create validator if needed
-    const collections = await db.listCollections({ name: "chatrooms" }).toArray();
-    if (collections.length === 0) {
-      console.log("ℹ️  Chatrooms collection doesn't exist, it will be created on first insert");
+    // Get a student to use as default creator
+    const studentsCol = db.collection("students");
+    const defaultStudent = await studentsCol.findOne({});
+    
+    if (!defaultStudent) {
+      throw new Error("No students found in database. Please seed students first.");
     }
+
+    const DEFAULT_CREATOR = defaultStudent._id;
+    console.log(`ℹ️  Using student ${defaultStudent.StudentID} as default creator`);
 
     // Use provided JSON file or fallback to default chatrooms
     let docs;
@@ -188,7 +192,14 @@ function stripUnknownKeys(doc) {
         // Validate + transforms
         validateRequiredFields(doc);
         validateNameUnique(doc, existingNames);
-        processCreatorField(doc);
+        
+        // Set creator if not provided
+        if (!doc.createdBy) {
+          doc.createdBy = DEFAULT_CREATOR;
+        } else {
+          processCreatorField(doc);
+        }
+        
         processMembersField(doc);
         setDefaultValues(doc);
 
@@ -214,7 +225,7 @@ function stripUnknownKeys(doc) {
     // Display inserted chatrooms
     console.log("\n📋 Inserted chatrooms:");
     ready.forEach(chatroom => {
-      console.log(`   • ${chatroom.name} - ${chatroom.description}`);
+      console.log(`   • ${chatroom.name} - ${chatroom.description} (${chatroom.isPrivate ? 'Private' : 'Public'})`);
     });
 
   } catch (err) {

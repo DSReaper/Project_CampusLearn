@@ -56,7 +56,7 @@ class MongoDBConnection {
         console.log('✅ Students collection updated with schema validation');
       }
 
-      await this.createIndexes();
+      await this.createStudentIndexes();
       
     } catch (error) {
       console.error('❌ Student collection setup failed:', error);
