@@ -5,6 +5,10 @@ class IStudentRepository{
     async findByEmail(email){
         throw new Error("Method not implemented")
     }
+
+    async isTutor(studentID){
+        throw new Error("Method not implemented")
+    }
 }
 
 module.exports=IStudentRepository;
