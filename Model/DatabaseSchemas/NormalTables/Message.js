@@ -17,8 +17,12 @@ const messageSchema = new mongoose.Schema({
   },
   messageType: {
     type: String,
-    enum: ['text'],
+    enum: ['text', 'image', 'file'],
     default: 'text'
+  },
+  repliedTo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Message'
   }
 }, {
   timestamps: true
