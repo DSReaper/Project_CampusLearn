@@ -31,6 +31,8 @@ router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
 
+//map route
+router.get('/map', (req, res) => res.render('map'));
 //chatroom routes
 // get al chatrooms
 router.get('/chatrooms', async (req, res) => {

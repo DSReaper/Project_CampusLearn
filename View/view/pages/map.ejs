@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Campus Map | CampusLearn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/loginstyles.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="/css/map.css" />
+    <link rel="alternate icon" href="/icons/favicon.ico" sizes="any" />
+  </head>
+  <body
+    class="<%= (typeof bodyClass !== 'undefined' && bodyClass) ? bodyClass : '' %>"
+  >
+    <div class="page-wrap">
+      <div class="card">
+        <div class="card-header">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 22s7-6.2 7-12.2A7 7 0 0 0 5 9.8C5 15.8 12 22 12 22Z"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+            <circle
+              cx="12"
+              cy="10"
+              r="2.8"
+              stroke="currentColor"
+              stroke-width="1.7"
+            />
+          </svg>
+          <h1 class="card-title">
+            Belgium Campus iTversity — Campus Map (PDF)
+          </h1>
+        </div>
+
+        <div class="pdf-shell">
+          <object
+            data="/pdfs/Belgium-Campus-Iteversity-Campus-Maps.pdf#view=FitH"
+            type="application/pdf"
+            width="100%"
+            height="100%"
+          >
+            <iframe
+              src="/pdfs/Belgium-Campus-Iteversity-Campus-Maps.pdf#view=FitH"
+              width="100%"
+              height="100%"
+              style="border: 0"
+            ></iframe>
+          </object>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navbar partial -->
+    <%- include('../partials/navbar')%>
+  </body>
+</html>

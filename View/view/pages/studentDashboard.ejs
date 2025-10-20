@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/css/loginstyles.css" />
+    <link rel="stylesheet" href="/css/fab.css" />
+    <link rel="alternate icon" href="/icons/favicon.ico" sizes="any" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Chatrooms</h1>
+        <div id="chatrooms">
+          <!-- Chatrooms content will go here -->
+        </div>
+      </div>
+    </div>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,20 +44,18 @@
    </div>
   </div>
 
-  <!-- Include the iPhone-style bottom navigation -->
-  <%- include('../partials/navbar') %>
+    <!-- Floating Button to Chat Page -->
+    <a href="/chat" class="fab" aria-label="Open Chat" title="Open Chat">
+      <!-- Chat bubble icon (inline SVG) -->
+      <svg viewBox="0 0 24 24" class="fab-icon" aria-hidden="true">
+        <path
+          d="M21 12c0 4.418-4.03 8-9 8-1.053 0-2.06-.156-3-.445L3 21l1.6-3.2C4.22 16.6 4 15.82 4 15c0-4.418 4.03-8 9-8s8 3.582 8 8Z"
+          fill="currentColor"
+        />
+      </svg>
+    </a>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const roleMsg = document.getElementById("roleMessage");
-      const isTutor = sessionStorage.getItem("isTutor") === "1";
-
-      if (isTutor) {
-        roleMsg.textContent = "🎓 Welcome Tutor — you have special access!";
-      } else {
-        roleMsg.textContent = "👩‍💻 Welcome Student — standard access only.";
-      }
-    });
-  </script>
-</body>
+    <!-- Include the iPhone-style bottom navigation -->
+    <%- include('../partials/navbar') %>
+  </body>
 </html>
