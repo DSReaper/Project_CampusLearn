@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const SocketService = require('./Services/SocketService');
+
 const app = express();
 const router = require('./Routes/routes');
 
