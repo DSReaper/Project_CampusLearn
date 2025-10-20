@@ -21,7 +21,7 @@
     "start": "nodemon main.js",
     "import:students": "node scripts/importStudents.js",
     "import:tutors": "node scripts/importTutors.js",
-    "import:chatrooms": "node scripts/ImportChartooms.js"
+    "import:chatrooms": "node scripts/importChartooms.js"
   },
   "devDependencies": {
     "mocha": "^11.7.4"
