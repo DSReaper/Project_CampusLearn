@@ -5,13 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Dashboard</title>
   <link rel="stylesheet" href="/css/loginstyles.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
 </head>
 <body>
   <div class="wrap">
     <div class="card">
       <h1>CampusLearn Dashboard</h1>
       <p id="roleMessage">Checking your role...</p>
-    </div>
+
+      <div class="chatroom-container">
+        <% if (chatrooms && chatrooms.length > 0) { %>
+          <% chatrooms.forEach(chatroom => { %>
+            <div class="chatroom-card">
+              <h2><%= chatroom.name %></h2>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>No chatrooms available.</p>
+        <% } %>
+      </div>
+   </div>
   </div>
 
   <!-- Include the iPhone-style bottom navigation -->
