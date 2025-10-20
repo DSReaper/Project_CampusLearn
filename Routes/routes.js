@@ -18,10 +18,14 @@ router.post("/reset-password", resetPasswordController);
 
 // Dashboard routes
 // router.get('/student/dashboard', (req, res) => res.render('studentDashboard'));
-router.get('/student/dashboard', chatroomController.renderDashboard);
+router.get(
+  '/student/dashboard',
+  chatroomController.renderDashboard.bind(chatroomController)
+);
 router.get('/profile/settings', (req, res) => res.render('profileSettings'));
 router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 
+// get chatrooms for a loggedin user
 // router.get('/student/dashboard', async (req, res) => {
 //   const chatrooms = await chatController.getUserChatrooms(req.session.userId);
 //     res.render('studentDashboard', { chatrooms })
@@ -32,17 +36,11 @@ router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
 
 //chatroom routes
-// get al chatrooms
-router.get('/chatrooms', async (req, res) => {
-  const response = await chatroomController.getAllChatrooms({ session: req.session });
-  res.render('chatrooms', { chatrooms: response.data });
-});
-
 // get a  chatroom by id
-router.get('/chatrooms/:chatroomId', async (req, res) => {
+router.get('/chatroom/:chatroomId', async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.getChatroom({ params: { chatroomId }, session: req.session });
-  res.render('chatroomDetail', { chatroom: response.data });
+  res.render('chatroom', { chatroom: response.data });
 });
 
 // create a chatroom (tutors)
@@ -64,12 +62,6 @@ router.post('/chatrooms/:chatroomId/leave', async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.leaveChatroom({ params: { chatroomId }, session: req.session });
   res.json(response); // 
-});
-
-// get chatrooms for a loggedin user
-router.get('/chatrooms/user', async (req, res) => {
-  const response = await chatroomController.getUserChatrooms({ session: req.session });
-  res.render('chatrooms', { chatrooms: response.data });
 });
 
 

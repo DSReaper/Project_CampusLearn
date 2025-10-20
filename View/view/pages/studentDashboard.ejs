@@ -3,44 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Dashboard</title>
-  <link rel="stylesheet" href="/css/loginstyles.css" />
+  <title>All Chatrooms</title>
   <link rel="stylesheet" href="/css/dashboard.css" />
 </head>
-<body>
+<body class="matrix">
+  <div class="code-bg" id="code-bg"></div>
+  <!-- ai chatbot -->
+  <div class="ai-chatbot-button">
+  <img id="aiChatBtn" src="/icons/BCBot.png" alt="AI Chatbot" />
+</div>
+  <!-- chatroom cards -->
   <div class="wrap">
-    <div class="card">
-      <h1>CampusLearn Dashboard</h1>
-      <p id="roleMessage">Checking your role...</p>
+    <div class="dashboard-card">
+      <h1>All Chatrooms</h1>
 
-      <div class="chatroom-container">
-        <% if (chatrooms && chatrooms.length > 0) { %>
-          <% chatrooms.forEach(chatroom => { %>
-            <div class="chatroom-card">
-              <h2><%= chatroom.name %></h2>
-            </div>
-          <% }) %>
-        <% } else { %>
-          <p>No chatrooms available.</p>
-        <% } %>
-      </div>
-   </div>
+  <div class="chatroom-container">
+    <% if (chatrooms && chatrooms.length > 0) { %>
+      <% chatrooms.forEach(chatroom => { %>
+        <div class="chatroom-card" data-id="<%= chatroom._id %>">
+          <h2><%= chatroom.name %></h2>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No chatrooms available.</p>
+    <% } %>
   </div>
 
-  <!-- Include the iPhone-style bottom navigation -->
-  <%- include('../partials/navbar') %>
+
+    <!-- Join Chat Popup -->
+  <div id="joinChatPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h2>Join a Chatroom</h2>
+      <input type="text" id="chatroomSearch" placeholder="Enter chatroom name..." />
+      <select id="chatroomResults" size="5"></select>
+      <button id="joinChatBtn">Join</button>
+      <button id="closePopupBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- create Chat Popup -->
+  <div id="createChatPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h2>Create a Chatroom</h2>
+      <input type="text" id="newChatName" placeholder="Chatroom Name" />
+      <textarea id="newChatDesc" placeholder="Description"></textarea>
+      <button id="createChatBtn">Create</button>
+      <button id="closeCreatePopupBtn">Cancel</button>
+    </div>
+  </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const roleMsg = document.getElementById("roleMessage");
-      const isTutor = sessionStorage.getItem("isTutor") === "1";
+  window.USER_ROLE = <%- (typeof user !== 'undefined' ? user.role : 0) %>;
+</script>
+  <%- include('../partials/navbar') %>
 
-      if (isTutor) {
-        roleMsg.textContent = "🎓 Welcome Tutor — you have special access!";
-      } else {
-        roleMsg.textContent = "👩‍💻 Welcome Student — standard access only.";
-      }
-    });
-  </script>
+<script src="/js/navbar.js" defer></script>
+  <script src="/js/dashboard.js"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 
   <div class="sidebar-menu">
     <!-- Home -->
-    <a href="/" class="sidebar-item active" data-page="home">
+    <a href="/studentDashboard" class="sidebar-item active" data-page="home">
       <div class="sidebar-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -25,15 +25,16 @@
     </a>
 
     <!-- Chat/Forums -->
-    <a href="/chat" class="sidebar-item" data-page="chat">
+    <a href="/chat" id="chatLink" class="sidebar-item" data-page="chat">
       <div class="sidebar-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
       </div>
-      <span class="sidebar-label">Forums & Chat</span>
+      <span class="sidebar-label" id="chatLabel">Forums & Chat</span>
       <div class="sidebar-indicator"></div>
     </a>
+
 
     <!-- Campus Map -->
     <a href="/map" class="sidebar-item" data-page="map">

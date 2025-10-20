@@ -1,10 +1,11 @@
 "use strict";
-
+const IChatroomRepository = require("./IChatroomRepository");
 const MongoDBConnection = require("../Model/database/connection.js");
 const { ObjectId } = require("mongodb");
 
 class ChatroomRepository extends IChatroomRepository {
   constructor() {
+    super();
     this.connection = new MongoDBConnection();
     this.collectionName = "chatrooms";
   }

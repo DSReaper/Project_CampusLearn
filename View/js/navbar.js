@@ -267,4 +267,29 @@ document.addEventListener('DOMContentLoaded', function() {
       nav.style.transform = 'translateY(0)';
     }, 1000);
   }, { passive: true });
+
+  
+
+  // Role is numeric: 1 = Tutor, 0 = Student NOT WORKING AS INTENED- vra vir Zac hoe om sy 1/0 waarde te kry vir die role
+  const userRole = Number(window.USER_ROLE); // passed from EJS
+
+  const chatLink = document.getElementById('chatLink');
+  if (chatLink) {
+    chatLink.addEventListener('click', (e) => {
+      e.preventDefault(); // prevent navigation
+      if (userRole === 1) {
+        document.getElementById('createChatPopup').style.display = 'flex';
+      }else {
+        document.getElementById('joinChatPopup').style.display = 'flex';
+      }
+    });
+  }
+  document.getElementById('closePopupBtn')?.addEventListener('click', () => {
+    document.getElementById('joinChatPopup').style.display = 'none';
+  });
+  document.getElementById('closeCreatePopupBtn')?.addEventListener('click', () => {
+    document.getElementById('createChatPopup').style.display = 'none';
+  });
+
+
 });

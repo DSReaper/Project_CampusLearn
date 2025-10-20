@@ -48,12 +48,17 @@ class ChatroomController {
   async renderDashboard(req, res) {
     try {
       const userId = req.user?.id;
+      console.log("👤 Logged-in user:", userId);
       const response = await this.chatroomService.getAllChatrooms(userId);
+      console.log("📦 ChatroomService response:", response);
+
       const chatrooms = response.success ? response.data : [];
-      res.render('studentDashboard', { chatrooms });
+      console.log("🧩 Chatrooms passed to EJS:", chatrooms);
+
+      res.render("studentDashboard", { chatrooms });
     } catch (error) {
-      console.error('Error fetching chatrooms:', error);
-      res.render('studentDashboard', { chatrooms: [] });
+      console.error("Error fetching chatrooms:", error);
+      res.render("studentDashboard", { chatrooms: [] });
     }
   }
 
