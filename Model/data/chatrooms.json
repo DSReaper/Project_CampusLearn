@@ -1,0 +1,50 @@
+[
+  {
+    "name": "General",
+    "description": "General discussion for all students",
+    "isPrivate": false,
+    "maxMembers": 100
+  },
+  {
+    "name": "Programming Help",
+    "description": "Get help with programming assignments and projects",
+    "isPrivate": false,
+    "maxMembers": 50
+  },
+  {
+    "name": "Mathematics",
+    "description": "Math problems, concepts, and study help",
+    "isPrivate": false,
+    "maxMembers": 50
+  },
+  {
+    "name": "Science Lab",
+    "description": "Physics, Chemistry, Biology discussions",
+    "isPrivate": false,
+    "maxMembers": 50
+  },
+  {
+    "name": "Study Group",
+    "description": "Collaborative study sessions and homework help",
+    "isPrivate": false,
+    "maxMembers": 30
+  },
+  {
+    "name": "Gaming",
+    "description": "Video games, esports, and gaming discussions",
+    "isPrivate": false,
+    "maxMembers": 50
+  },
+  {
+    "name": "Music Lovers",
+    "description": "Share and discuss music of all genres",
+    "isPrivate": false,
+    "maxMembers": 50
+  },
+  {
+    "name": "Private Study Room",
+    "description": "Invite-only study group for focused sessions",
+    "isPrivate": true,
+    "maxMembers": 10
+  }
+]
