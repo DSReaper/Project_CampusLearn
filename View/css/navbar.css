@@ -34,9 +34,15 @@
 }
 
 .sidebar-menu {
-  flex: 1;
-  padding: 24px 16px;
-  overflow-y: auto;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;     /* <-- centers the menu */
+    align-items: center;
+    gap: 24px;                   /* spacing between items */
+    padding: 0 8px;
+    overflow: visible;           /* no scrollbars */
+    max-width: 1100px;           /* keep a nice readable width */
+    margin: 0 auto;              /* center the block itself */
 }
 
 .sidebar-item {
@@ -132,7 +138,7 @@
   -webkit-backdrop-filter: blur(25px);
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
+  box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -146,6 +152,7 @@
     transform: translateY(100px);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
@@ -158,10 +165,10 @@
   align-items: center;
   padding: 15px 20px;
   position: relative;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    rgba(255, 255, 255, 0.05) 50%, 
-    rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(0, 0, 0, 0.1) 100%);
 }
 
 .floating-indicator {
@@ -173,7 +180,7 @@
   top: 50%;
   transform: translateY(-50%);
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(102, 126, 234, 0.4),
     0 0 20px rgba(118, 75, 162, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -195,10 +202,13 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0.6;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.2);
     opacity: 0.2;
@@ -328,7 +338,7 @@
   justify-content: center;
   transform: scale(0);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgba(255, 107, 107, 0.4),
     0 0 0 2px rgba(255, 255, 255, 0.2);
   z-index: 4;
@@ -336,13 +346,16 @@
 }
 
 @keyframes badge-glow {
-  0%, 100% {
-    box-shadow: 
+
+  0%,
+  100% {
+    box-shadow:
       0 4px 12px rgba(255, 107, 107, 0.4),
       0 0 0 2px rgba(255, 255, 255, 0.2);
   }
+
   50% {
-    box-shadow: 
+    box-shadow:
       0 4px 20px rgba(255, 107, 107, 0.6),
       0 0 0 3px rgba(255, 255, 255, 0.3),
       0 0 20px rgba(255, 107, 107, 0.3);
@@ -360,10 +373,13 @@
 }
 
 @keyframes sparkle {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1) rotate(0deg);
     opacity: 0.6;
   }
+
   50% {
     transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
     opacity: 0.8;
@@ -374,19 +390,102 @@
    RESPONSIVE BEHAVIOR
    ============================================== */
 
-/* Desktop: Show sidebar, hide bottom nav */
+/* Desktop: SHOW bottom bar instead of side nav */
 @media (min-width: 769px) {
+
+  /* Turn the desktop sidebar into a bottom, full-width bar */
   .desktop-sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    height: 72px;
+    /* bar height */
+    width: 100%;
+    background: linear-gradient(145deg, #1e1e30, #25253a);
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.25);
+    flex-direction: row;
+    /* horizontal layout */
+    align-items: center;
+    z-index: 1000;
     display: flex;
   }
-  
-  .mobile-bottom-nav {
+
+  /* Header becomes small brand area on the left */
+  .sidebar-header {
+    padding: 0 16px;
+    border-bottom: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Menu becomes a horizontal scroller */
+  .sidebar-menu {
+    flex: 1;
+    padding: 0 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+  }
+
+  /* Items are compact pills */
+  .sidebar-item {
+    height: 44px;
+    padding: 10px 14px;
+    margin: 0;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transform: none;
+  }
+
+  .sidebar-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .sidebar-item.active:hover {
+    transform: none;
+  }
+
+  /* Icon + label alignment in a row */
+  .sidebar-icon {
+    margin-right: 10px;
+  }
+
+  /* Hide the old left indicator */
+  .sidebar-indicator {
     display: none;
   }
-  
-  /* Add left margin to main content to account for sidebar */
+
+  /* Footer area sits at right */
+  .sidebar-footer {
+    padding: 0 12px;
+    border-top: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Desktop page spacing: remove left margin, add bottom padding for the bar */
   body {
-    margin-left: 280px;
+    margin-left: 0;
+    padding-bottom: 84px;
+    /* 72px bar + spacing */
+  }
+
+  /* Ensure the mobile-bottom-nav stays hidden on desktop */
+  .mobile-bottom-nav {
+    display: none !important;
   }
 }
 
@@ -395,14 +494,15 @@
   .desktop-sidebar {
     display: none;
   }
-  
+
   .mobile-bottom-nav {
     display: block;
   }
-  
+
   body {
     margin-left: 0;
-    padding-bottom: 80px; /* Account for bottom nav height */
+    padding-bottom: 80px;
+    /* Account for bottom nav height */
   }
 }
 
@@ -411,12 +511,12 @@
   .nav-container {
     padding: 6px 12px 10px;
   }
-  
+
   .nav-icon {
     width: 22px;
     height: 22px;
   }
-  
+
   .nav-label {
     font-size: 9px;
   }
@@ -426,7 +526,7 @@
   .nav-label {
     display: none;
   }
-  
+
   .nav-icon {
     margin-bottom: 0;
   }
@@ -451,9 +551,17 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Notification badges */
@@ -489,38 +597,55 @@
     background: rgba(248, 248, 248, 0.95);
     border-top-color: rgba(0, 0, 0, 0.1);
   }
-  
+
   .nav-item {
     color: rgba(0, 0, 0, 0.6);
   }
-  
+
   .nav-item:hover,
   .nav-item:focus {
     color: rgba(0, 0, 0, 0.8);
   }
-  
+
   .desktop-sidebar {
     background: linear-gradient(145deg, #f8f9fa, #e9ecef);
     border-right-color: rgba(0, 0, 0, 0.1);
   }
-  
+
   .sidebar-item {
     color: rgba(0, 0, 0, 0.7);
   }
-  
+
   .sidebar-item:hover {
     background: rgba(0, 0, 0, 0.05);
     color: rgba(0, 0, 0, 0.9);
   }
-  
+
   .logo h2 {
     color: #000000;
   }
 }
 
+/* Light mode tweaks for bottom bar on desktop */
+@media (prefers-color-scheme: light) and (min-width: 769px) {
+  .desktop-sidebar {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-top-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.12);
+  }
+}
+
 /* Badge bounce animation */
 @keyframes badge-bounce {
-  0% { transform: scale(0) rotate(0deg); }
-  50% { transform: scale(1.3) rotate(10deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.3) rotate(10deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
