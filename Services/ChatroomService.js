@@ -1,5 +1,5 @@
-const Chatroom = require('../models/Chatroom');
-const Message = require('../models/Message');
+const Chatroom = require('../Model/DatabaseSchemas/NormalTables/ChatRoomsChatSchema');
+const Message = require('../Model/DatabaseSchemas/NormalTables/Message');
 
 class ChatroomService {
   // Create a new chatroom
