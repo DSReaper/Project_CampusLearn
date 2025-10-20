@@ -7,7 +7,7 @@ const chatroomController = require('../Controller/chatroomController.js');
 const router = express.Router();
 
 // Default route — show login page first
-router.get('/', (req, res) => res.render('studentDashboard'));
+router.get('/', (req, res) => res.render('login'));
 
 // Auth routes
 router.get('/login', (req, res) => res.render('login'));
