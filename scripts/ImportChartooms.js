@@ -36,17 +36,18 @@ function validateNameUnique(doc, existingNames) {
   existingNames.add(doc.name);
 }
 
-function processCreatorField(doc) {
-  if (doc.createdBy && typeof doc.createdBy === 'string') {
+function processCreatorField(doc, defaultCreator) {
+  if (!doc.createdBy) {
+    // Use default creator if none provided
+    doc.createdBy = defaultCreator;
+  } else if (typeof doc.createdBy === 'string') {
     try {
       doc.createdBy = new ObjectId(doc.createdBy);
     } catch (e) {
       throw new Error(`Invalid createdBy ObjectId: "${doc.createdBy}"`);
     }
-  } else if (!doc.createdBy) {
-    // Try to get a student from the database to use as creator
-    throw new Error('createdBy field is required');
   }
+  // If it's already an ObjectId, leave it as is
 }
 
 function processMembersField(doc) {
@@ -66,7 +67,11 @@ function processMembersField(doc) {
     });
     
     // Ensure creator is in members
-    if (!doc.members.some(member => member.equals(doc.createdBy))) {
+    const creatorInMembers = doc.members.some(member => 
+      member.equals ? member.equals(doc.createdBy) : member.toString() === doc.createdBy.toString()
+    );
+    
+    if (!creatorInMembers) {
       doc.members.push(doc.createdBy);
     }
   }
@@ -109,7 +114,7 @@ function stripUnknownKeys(doc) {
     }
 
     const DEFAULT_CREATOR = defaultStudent._id;
-    console.log(`ℹ️  Using student ${defaultStudent.StudentID} as default creator`);
+    console.log(`ℹ️  Using student ${defaultStudent.StudentID} (${defaultStudent.FirstName} ${defaultStudent.LastName}) as default creator`);
 
     // Use provided JSON file or fallback to default chatrooms
     let docs;
@@ -189,19 +194,16 @@ function stripUnknownKeys(doc) {
         // Strict to schema
         stripUnknownKeys(doc);
 
-        // Validate + transforms
-        validateRequiredFields(doc);
-        validateNameUnique(doc, existingNames);
+        // Set createdBy FIRST (before validation)
+        processCreatorField(doc, DEFAULT_CREATOR);
         
-        // Set creator if not provided
-        if (!doc.createdBy) {
-          doc.createdBy = DEFAULT_CREATOR;
-        } else {
-          processCreatorField(doc);
-        }
-        
+        // Then process other fields
         processMembersField(doc);
         setDefaultValues(doc);
+        
+        // Now validate (createdBy should be set by now)
+        validateRequiredFields(doc);
+        validateNameUnique(doc, existingNames);
 
         ready.push(doc);
       } catch (e) {

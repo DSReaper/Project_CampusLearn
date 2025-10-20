@@ -2,48 +2,56 @@
   {
     "name": "General",
     "description": "General discussion for all students",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 100
   },
   {
-    "name": "Programming Help",
-    "description": "Get help with programming assignments and projects",
+    "name": "Programming",
+    "description": "Discuss programming languages and projects",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 50
   },
   {
     "name": "Mathematics",
-    "description": "Math problems, concepts, and study help",
+    "description": "Help with math problems and concepts",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 50
   },
   {
-    "name": "Science Lab",
+    "name": "Science",
     "description": "Physics, Chemistry, Biology discussions",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 50
   },
   {
     "name": "Study Group",
-    "description": "Collaborative study sessions and homework help",
+    "description": "Collaborative study sessions",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 30
   },
   {
     "name": "Gaming",
-    "description": "Video games, esports, and gaming discussions",
+    "description": "Video games and esports",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 50
   },
   {
-    "name": "Music Lovers",
-    "description": "Share and discuss music of all genres",
+    "name": "Music",
+    "description": "Share and discuss music",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": false,
     "maxMembers": 50
   },
   {
-    "name": "Private Study Room",
-    "description": "Invite-only study group for focused sessions",
+    "name": "Private Study",
+    "description": "Invite-only study group",
+    "createdBy": "65d7a9b1a1b2c3d4e5f6a7b8",
     "isPrivate": true,
     "maxMembers": 10
   }
