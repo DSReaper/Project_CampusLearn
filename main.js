@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const socketService = require('./Services/SocketService');
+
 const app = express();
 const router = require('./Routes/routes');
 
@@ -11,6 +13,10 @@ dbConnection.connect().catch(console.error);
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
+
+// socketService.initializeSocket(app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// }));
 
 // Views (EJS)
 app.set('view engine', 'ejs');
