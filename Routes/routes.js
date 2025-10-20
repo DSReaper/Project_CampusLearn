@@ -24,4 +24,7 @@ router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
 
+//map route
+router.get('/map', (req, res) => res.render('map'));
+
 module.exports = router;
