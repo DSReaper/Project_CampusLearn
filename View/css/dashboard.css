@@ -1,0 +1,50 @@
+body {
+      background-color: #121212; /* dark background */
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .role-message {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .chatroom-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .chatroom-card {
+      background-color: #ff0000; /* red */
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .chatroom-card h2 {
+      color: #fff;
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .chatroom-card:hover {
+      transform: translateX(10px);
+      background-color: #cc0000; /* slightly darker red */
+      box-shadow: 0 6px 8px rgba(0,0,0,0.7);
+    }

@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const { StudentSchema } = require('../DatabaseSchemas/NormalTables/StudentSchema');
+const { ChatroomSchema } = require('../DatabaseSchemas/NormalTables/ChatRoomsChatSchema');
 
 class MongoDBConnection {
   constructor() {
@@ -28,6 +29,7 @@ class MongoDBConnection {
       console.log('✅ Student Service MongoDB connected successfully');
       
       await this.setupStudentCollection();
+      await this.setupChatroomCollection();
       return this.db;
     } catch (error) {
       console.error('❌ Student Service MongoDB connection failed:', error);
@@ -54,7 +56,7 @@ class MongoDBConnection {
         console.log('✅ Students collection updated with schema validation');
       }
 
-      await this.createIndexes();
+      await this.createStudentIndexes();
       
     } catch (error) {
       console.error('❌ Student collection setup failed:', error);
@@ -62,7 +64,35 @@ class MongoDBConnection {
     }
   }
 
-  async createIndexes() {
+  async setupChatroomCollection() {
+    try {
+      const db = this.getDatabase();
+      
+      const collections = await db.listCollections({ name: 'chatrooms' }).toArray();
+      
+      if (collections.length === 0) {
+        await db.createCollection('chatrooms', {
+          validator: ChatroomSchema
+        });
+        console.log('✅ Chatrooms collection created with schema validation');
+      } else {
+        await db.command({
+          collMod: 'chatrooms',
+          validator: ChatroomSchema
+        });
+        console.log('✅ Chatrooms collection updated with schema validation');
+      }
+
+      await this.createChatroomIndexes();
+      
+    } catch (error) {
+      console.error('❌ Chatroom collection setup failed:', error);
+      throw error;
+    }
+  }
+
+
+  async createStudentIndexes() {
     try {
       const db = this.getDatabase();
       
@@ -87,6 +117,40 @@ class MongoDBConnection {
       console.error('❌ Student index creation failed:', error);
     }
   }
+
+  async createChatroomIndexes() {
+    try {
+      const db = this.getDatabase();
+      
+      // Unique index on name
+      await db.collection('chatrooms').createIndex({ name: 1 }, { unique: true });
+      console.log('✅ Created unique index on chatroom name');
+      
+      // Index on createdBy for faster queries
+      await db.collection('chatrooms').createIndex({ createdBy: 1 });
+      console.log('✅ Created index on createdBy');
+      
+      // Index on members for membership queries
+      await db.collection('chatrooms').createIndex({ members: 1 });
+      console.log('✅ Created index on members');
+      
+      // Index on isPrivate for filtering
+      await db.collection('chatrooms').createIndex({ isPrivate: 1 });
+      console.log('✅ Created index on isPrivate');
+      
+      // Compound index for common queries
+      await db.collection('chatrooms').createIndex({ isPrivate: 1, members: 1 });
+      console.log('✅ Created compound index on isPrivate and members');
+      
+      // Index for createdAt for sorting
+      await db.collection('chatrooms').createIndex({ createdAt: -1 });
+      console.log('✅ Created index on createdAt');
+      
+    } catch (error) {
+      console.error('❌ Chatroom index creation failed:', error);
+    }
+  }
+
 
   async disconnect() {
     try {
