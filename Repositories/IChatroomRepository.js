@@ -1,4 +1,4 @@
-class ChatroomRepository {
+class IChatroomRepository {
   constructor() {
     
   }
@@ -54,4 +54,4 @@ class ChatroomRepository {
   }
 }
 
-module.exports = ChatroomRepository;
+module.exports = IChatroomRepository;
