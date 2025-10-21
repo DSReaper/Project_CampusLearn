@@ -38,8 +38,6 @@ router.get('/chatroom/search', chatroomController.searchChatrooms.bind(chatroomC
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
 
-router.get('/map', (req, res) => res.render('map'));
-
 //get chatrooms
 router.get('/chatroom', async (req, res) => {
   try {

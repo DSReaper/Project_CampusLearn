@@ -9,7 +9,7 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "express-session": "^1.18.1",
+    "express-session": "^1.18.2",
     "mongoose": "^8.19.1",
     "nodemon": "^3.1.10",
     "openai": "^6.3.0",
