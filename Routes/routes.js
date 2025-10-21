@@ -80,6 +80,12 @@ router.post('/chatroom/:chatroomId/leave', async (req, res) => {
   res.json(response); // 
 });
 
-
+router.get('/check-session', (req, res) => {
+  res.json({
+    session: req.session,
+    user: req.user,
+    sessionId: req.sessionID
+  });
+});
 
 module.exports = router;

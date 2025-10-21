@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (res.ok && data.ok) {
         console.log("✅ Login successful, redirecting to:", data.redirect);
         
-        // Use the redirect URL from the server
+        // Redirect to the URL provided by the server
         window.location.href = data.redirect;
       } else {
         errorText.textContent = data.error || data.message || "Invalid email or password.";
