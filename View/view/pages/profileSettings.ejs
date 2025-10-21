@@ -1,1 +1,164 @@
-<h1>Profile Settings</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="alternate icon" href="/icons/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/css/loginstyles.css" />
+    <style>
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: #f2f2f2;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .profile-name {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--black);
+        margin: 0;
+      }
+      .meta {
+        color: #333;
+        margin: 0;
+        opacity: 0.85;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 10px;
+        width: 100%;
+      }
+      .tile {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+      .p-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        color: #444;
+        text-transform: uppercase;
+      }
+      .p-value {
+        margin-top: 6px;
+        font-size: 1rem;
+        color: #000;
+        word-break: break-word;
+      }
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="code-bg" id="codeBg" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="card">
+        <h1>CampusLearn</h1>
+        <p class="sub">My Profile</p>
+
+        <div class="profile-header">
+          <div class="avatar" aria-hidden="true">
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="8"
+                r="4"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M4 20c0-4 4-6 8-6s8 2 8 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <p id="fullName" class="profile-name">Loading…</p>
+            <p id="emailTop" class="meta">@student.belgiumcampus.ac.za</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="tile">
+            <div class="p-label">Name</div>
+            <div id="firstName" class="p-value">—</div>
+          </div>
+          <div class="tile">
+            <div class="p-label">Surname</div>
+            <div id="lastName" class="p-value">—</div>
+          </div>
+          <div class="tile" style="grid-column: 1 / -1">
+            <div class="p-label">Email</div>
+            <div id="email" class="p-value">—</div>
+          </div>
+          <div class="tile" style="grid-column: 1 / -1">
+            <div class="p-label">Student Number</div>
+            <div id="studentId" class="p-value">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/navbar') %>
+
+    <script src="/animation/loginanimations.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const res = await fetch("/session", { credentials: "include" });
+          const data = await res.json();
+          if (!data.ok) {
+            window.location.href = "/login";
+            return;
+          }
+
+          const u = data.user || {};
+          const first = u.firstName || "";
+          const last = u.lastName || "";
+          const email = u.email || "";
+          const id = (u.id || u._id || "").toString();
+
+          document.getElementById("firstName").textContent = first || "—";
+          document.getElementById("lastName").textContent = last || "—";
+          document.getElementById("email").textContent = email || "—";
+          document.getElementById("emailTop").textContent = email || "";
+          document.getElementById("studentId").textContent = id || "—";
+
+          const full = `${first} ${last}`.trim() || "Student";
+          document.getElementById("fullName").textContent = full;
+        } catch (e) {
+          console.error("Profile load error:", e);
+          window.location.href = "/login";
+        }
+      });
+    </script>
+  </body>
+</html>
