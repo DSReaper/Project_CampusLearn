@@ -122,9 +122,9 @@ class ChatroomController {
           $set: { updatedAt: new Date() }
         }
       );
-      console.log(`✅ User ${userId} joined chatroom ${chatroomId}`);
+      console.log(`User ${userId} joined chatroom ${chatroomId}`);
     } else {
-      console.log(`ℹ️ User ${userId} is already a member of chatroom ${chatroomId}`);
+      console.log(`ℹUser ${userId} is already a member of chatroom ${chatroomId}`);
     }
 
     return res.json({ 
@@ -137,7 +137,7 @@ class ChatroomController {
     });
 
   } catch (err) {
-    console.error("❌ Error in joinChatroom:", err);
+    console.error("Error in joinChatroom:", err);
     return res.status(500).json({ success: false, message: "Server error." });
   } finally {
     try {
@@ -145,14 +145,10 @@ class ChatroomController {
         await this.conn.disconnect();
       }
     } catch (disconnectError) {
-      console.error("❌ Error disconnecting:", disconnectError);
+      console.error("Error disconnecting:", disconnectError);
     }
   }
 }
-
-
-
-  
 
   async leaveChatroom(req, res) {
     const userId = req.user?.id;
@@ -189,7 +185,7 @@ class ChatroomController {
       const searchTerm = req.query.q || "";
       const userId = req.user?.id || null;
 
-      console.log(`🔍 Controller: Searching for chatrooms with term "${searchTerm}"`);
+      console.log(`Controller: Searching for chatrooms with term "${searchTerm}"`);
 
       const response = await this.chatroomService.searchChatrooms(searchTerm, userId);
 
@@ -199,10 +195,36 @@ class ChatroomController {
         res.status(400).json({ error: response.error || "No results found" });
       }
     } catch (error) {
-      console.error("❌ Controller: Error in searchChatrooms:", error);
+      console.error("Controller: Error in searchChatrooms:", error);
       res.status(500).json({ error: "Internal server error" });
     }
   }
+  
+  async renderChatroom(req, res) {
+    const chatroomId = req.params.chatroomId;
+    const userId = req.session.user?._id;
+
+    console.log("🔹 renderChatroom called:", { chatroomId, userId });
+
+    try {
+      // ✅ Use "this.chatroomService", not just "chatroomService"
+      const result = await this.chatroomService.getChatroomWithMessages(chatroomId, userId);
+      console.log("getChatroomWithMessages result:", result);
+
+      if (!result.success) {
+        return res.status(404).send(result.error);
+      }
+
+      res.render("chatroom", { chatroom: result.data, userId });
+    } catch (err) {
+      console.error("❌ Error rendering chatroom:", err);
+      res.status(500).send("Server error");
+    }
+  }
+
+
+
+
 
 
 }

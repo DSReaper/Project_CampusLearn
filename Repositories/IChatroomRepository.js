@@ -52,6 +52,7 @@ class IChatroomRepository {
 
   async disconnect() {
   }
+  async getMessagesByChatroom(chatroomId) {}
 }
 
 module.exports = IChatroomRepository;

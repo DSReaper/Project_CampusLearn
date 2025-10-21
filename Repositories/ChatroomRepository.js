@@ -311,6 +311,26 @@ class ChatroomRepository extends IChatroomRepository {
       console.error("❌ Error disconnecting repository:", error);
     }
   }
+  async getMessagesByChatroom(chatroomId) {
+  let collection;
+  try {
+    const db = await this.connection.connect();
+    collection = db.collection("chatmessages"); // separate collection for messages
+
+    const chatroomObjectId = new ObjectId(chatroomId);
+
+    const messages = await collection
+      .find({ chatroomId: chatroomObjectId })
+      .sort({ createdAt: 1 })
+      .toArray();
+
+    console.log(`✅ Retrieved ${messages.length} messages for chatroom ${chatroomId}`);
+    return messages;
+  } catch (error) {
+    console.error("❌ Error fetching messages:", error);
+    throw error;
+  }
+}
 }
 
 module.exports = ChatroomRepository;

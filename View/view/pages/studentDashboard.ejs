@@ -17,7 +17,7 @@
      <div class="chatroom-container">
         <% if (chatrooms && chatrooms.length > 0) { %>
           <% chatrooms.forEach(chatroom => { %>
-            <div class="chatroom-card" data-id="<%= chatroom._id %>">
+            <div class="chatroom-card" data-id="<%= chatroom.id %>">
               <h2><%= chatroom.name %></h2>
             </div>
           <% }) %>
@@ -64,5 +64,6 @@
     <!-- Include the iPhone-style bottom navigation -->
     <%- include('../partials/navbar') %>
     <script src="/js/dashboard.js"></script>
+    <script src="/js/chatroom.js"></script>
   </body>
 </html>
