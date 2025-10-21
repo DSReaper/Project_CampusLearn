@@ -16,6 +16,7 @@ router.post('/login', loginUser);
 router.get("/forgot", (req, res) => res.render("forgotpassword"));
 router.post("/reset-password", resetPasswordController);
 
+router.get('/map', (req, res) => res.render('map'));
 
 // Dashboard routes
 router.get(
@@ -38,6 +39,10 @@ router.get('/chatroom/search', chatroomController.searchChatrooms.bind(chatroomC
 // Chatbot routes
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
+
+
+//map
+
 
 //get chatrooms
 router.get('/chatroom', async (req, res) => {
