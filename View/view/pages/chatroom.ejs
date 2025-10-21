@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= chatroom.name %> - Chatroom</title>
+  <link rel="stylesheet" href="/css/chatroom.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1><%= chatroom.name %></h1>
+
+      <div class="chat-box">
+        <div class="msgs" id="msgs">
+          <% if (messages && messages.length > 0) { %>
+            <% messages.forEach(msg => { %>
+              <div class="msg <%= msg.userId === userId ? 'user' : 'other' %>">
+                <div class="bubble"><%= msg.body %></div>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>No messages yet. Start the conversation!</p>
+          <% } %>
+        </div>
+
+        <div class="input-wrap">
+          <div class="input-container">
+            <input type="text" id="msgInput" placeholder="Type a message..." />
+            <button class="send-icon" id="sendBtn">
+              <svg viewBox="0 0 24 24">
+                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script src="/js/chatroom.js"></script>
+</body>
+</html>

@@ -88,4 +88,8 @@ router.get('/check-session', (req, res) => {
   });
 });
 
+// open a chatroom
+router.get('/chatroom/open/:chatroomId', authMiddleware, chatroomController.renderChatroom.bind(chatroomController));
+
+
 module.exports = router;

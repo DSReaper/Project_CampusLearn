@@ -398,6 +398,36 @@ class ChatroomService {
       await this.chatroomRepository.disconnect();
     }
   }
+
+
+  async getChatroomWithMessages(chatroomId, userId) {
+    try {
+      console.log(`🔄 ChatroomService: Getting chatroom ${chatroomId} with messages for user ${userId}`);
+
+      const chatroom = await this.chatroomRepository.getChatroomById(chatroomId, userId);
+      if (!chatroom) {
+        return { success: false, error: "Chatroom not found or access denied", data: null };
+      }
+
+      const messages = await this.chatroomRepository.getMessagesByChatroom(chatroomId);
+
+      return {
+        success: true,
+        data: {
+          id: chatroom._id,
+          name: chatroom.name,
+          members: chatroom.members,
+          messages: messages, // array of messages
+        }
+      };
+    } catch (error) {
+      console.error(" ChatroomService: Error getting chatroom with messages:", error);
+      return { success: false, error: error.message, data: null };
+    } finally {
+      await this.chatroomRepository.disconnect();
+    }
+  }
 }
+
 
 module.exports = ChatroomService;
