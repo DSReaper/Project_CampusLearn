@@ -20,7 +20,12 @@ exports.loginUser = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ role, token });
+    res.status(200).json({ role, message: "Logged in" }).cookie("token", token, {
+      httpOnly: true,
+      secure: true, // only over HTTPS
+      sameSite: "Strict",
+      maxAge: 3600000 // 1 hour
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,6 +1,8 @@
 const Chatroom = require('../Model/Mongoose_Schema_models/chatroom');
 const Message = require('../Model/Mongoose_Schema_models/Message');
 
+
+
 exports.getActiveChatrooms = async (req, res) => {
   try {
     const chatrooms = await Chatroom.find({ participants: req.user._id });

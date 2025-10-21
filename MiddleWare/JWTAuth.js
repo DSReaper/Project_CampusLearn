@@ -1,8 +1,14 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {
-  const token = req.header("Authorization")?.split(" ")[1];
-  if (!token) return res.status(401).json({ message: "Access denied" });
+  const authHeader = req.header("Authorization");
+  const cookieToken = req.cookies?.token;
+
+  const token = authHeader?.startsWith("Bearer ")
+    ? authHeader.split(" ")[1]
+    : cookieToken;
+
+  if (!token) return res.status(401).json({ message: "Access denied. No token provided." });
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
@@ -13,4 +19,5 @@ module.exports = function (req, res, next) {
   }
 };
 
-//Requires "WT_SECRET=your_super_secret_key" in your .env file
+
+//Requires "JWT_SECRET=your_super_secret_key" in your .env file

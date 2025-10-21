@@ -8,10 +8,10 @@ const {
   getNotifications
 } = require('../Controller/dashboardController');
 
-dashboardRouter.get('/api/dashboard', (req, res) => res.render('studentDashboard'));
-dashboardRouter.get('/api/dashboard/profile/settings', (req, res) => res.render('profileSettings'));
-dashboardRouter.get('/api/dashboard/summary', auth, getSummary);
-dashboardRouter.get('/api/dashboard/notifications', auth, getNotifications);
+dashboardRouter.get('/', (req, res) => res.render('studentDashboard'));
+dashboardRouter.get('/profile/settings', (req, res) => res.render('profileSettings'));
+dashboardRouter.get('/summary', auth, getSummary);
+dashboardRouter.get('/notifications', auth, getNotifications);
 
 module.exports = {
   dashboardRouter

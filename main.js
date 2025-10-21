@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
+
 
 const app = express();
 const router = require('./Routes/routes');
@@ -12,6 +14,7 @@ dbConnection.connect().catch(console.error);
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 
+
 // Views (EJS)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'View', 'view', 'pages'));
@@ -22,6 +25,9 @@ app.use('/icons', express.static(path.join(__dirname, 'View', 'icons')));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); 
+
+// Cookie parser middleware
+app.use(cookieParser());
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
