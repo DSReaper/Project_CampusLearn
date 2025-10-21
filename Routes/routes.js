@@ -17,11 +17,18 @@ router.post("/reset-password", resetPasswordController);
 
 
 // Dashboard routes
-// router.get('/student/dashboard', (req, res) => res.render('studentDashboard'));
-router.get('/student/dashboard', chatroomController.renderDashboard);
+router.get(
+  '/student/dashboard',
+  chatroomController.renderDashboard.bind(chatroomController)
+);
 router.get('/profile/settings', (req, res) => res.render('profileSettings'));
 router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 
+//search a chatroom 
+router.get('/chatroom/search', chatroomController.searchChatrooms.bind(chatroomController));
+
+
+// get chatrooms for a loggedin user
 // router.get('/student/dashboard', async (req, res) => {
 //   const chatrooms = await chatController.getUserChatrooms(req.session.userId);
 //     res.render('studentDashboard', { chatrooms })
@@ -31,48 +38,49 @@ router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
 
-//map route
-router.get('/map', (req, res) => res.render('map'));
-//chatroom routes
-// get al chatrooms
-router.get('/chatrooms', async (req, res) => {
-  const response = await chatroomController.getAllChatrooms({ session: req.session });
-  res.render('chatrooms', { chatrooms: response.data });
+//get chatrooms
+router.get('/chatroom', async (req, res) => {
+  try {
+    const userId = req.session?.user?._id || req.session?.userId || null;
+    const response = await chatroomController.chatroomService.getAllChatrooms(userId);
+
+    // Send only array of chatrooms for frontend
+    res.json(response.data || []);
+  } catch (error) {
+    console.error("Error fetching chatrooms:", error);
+    res.status(500).json({ success: false, error: "Internal server error" });
+  }
 });
 
 // get a  chatroom by id
-router.get('/chatrooms/:chatroomId', async (req, res) => {
+router.get('/chatroom/:chatroomId', async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.getChatroom({ params: { chatroomId }, session: req.session });
-  res.render('chatroomDetail', { chatroom: response.data });
+  res.render('chatroom', { chatroom: response.data });
 });
 
 // create a chatroom (tutors)
-router.post('/chatrooms', async (req, res) => {
+router.post('/chatroomCreate', async (req, res) => {
   const chatroomData = req.body;
   const response = await chatroomController.createChatroom({ body: chatroomData, session: req.session });
   res.json(response); // 
 });
 
+
 // join chatroom (students)
-router.post('/chatrooms/:chatroomId/join', async (req, res) => {
+router.post('/chatroom/:chatroomId/join', async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.joinChatroom({ params: { chatroomId }, session: req.session });
   res.json(response); // 
 });
 
 // leave a chatroom
-router.post('/chatrooms/:chatroomId/leave', async (req, res) => {
+router.post('/chatroom/:chatroomId/leave', async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.leaveChatroom({ params: { chatroomId }, session: req.session });
   res.json(response); // 
 });
 
-// get chatrooms for a loggedin user
-router.get('/chatrooms/user', async (req, res) => {
-  const response = await chatroomController.getUserChatrooms({ session: req.session });
-  res.render('chatrooms', { chatrooms: response.data });
-});
 
 
 module.exports = router;
