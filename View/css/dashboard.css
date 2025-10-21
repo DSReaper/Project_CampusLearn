@@ -195,3 +195,16 @@ body {
   border-radius: 8px;
   border: none;
 }
+/* Join Chatroom Popup select styling */
+#chatroomResults {
+  width: 100%;          /* full width of popup */
+  height: 200px;        /* make it bigger, shows multiple options */
+  font-size: 16px;      /* larger text */
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  box-sizing: border-box;
+}
+

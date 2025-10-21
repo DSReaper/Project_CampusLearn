@@ -1,8 +1,12 @@
+const { ObjectId } = require("mongodb");
 const ChatroomService = require("../Services/ChatroomService.js");
+const MongoDBConnection = require("../Model/database/connection.js");
+
 
 class ChatroomController {
   constructor() {
     this.chatroomService = new ChatroomService();
+    this.conn = new MongoDBConnection();
   }
 
   async getAllChatrooms(req, res) {
@@ -26,31 +30,45 @@ class ChatroomController {
   }
 
   async joinChatroom(req, res) {
-  try {
-    const chatroomId = req.params.chatroomId; // make sure this matches your route
-    const userId = req.user?._id; // or req.user?.id
+    let client;
+    try {
+      const chatroomId = req.params.chatroomId;
+      const userId = req.user?._id;
 
-    if (!chatroomId) {
-      return res.status(400).json({ success: false, message: "Chatroom ID is required." });
+      if (!chatroomId) {
+        return res.status(400).json({ success: false, message: "Chatroom ID is required." });
+      }
+
+      client = await this.conn.connect();
+      const db = this.conn.getDatabase();
+      const chatroomsCol = db.collection("chatrooms");
+
+      const chatroom = await chatroomsCol.findOne({ _id: new ObjectId(chatroomId) });
+      if (!chatroom) {
+        return res.status(404).json({ success: false, message: "Chatroom not found." });
+      }
+
+      // Add user to members if not already
+      const isMember = chatroom.members.some(memberId => memberId.toString() === userId.toString());
+      if (!isMember) {
+        await chatroomsCol.updateOne(
+          { _id: new ObjectId(chatroomId) },
+          { $push: { members: new ObjectId(userId) } }
+        );
+      }
+
+      return res.json({ success: true });
+
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, message: "Server error." });
+    } finally {
+      try {
+        await this.conn.disconnect();
+      } catch {}
     }
-
-    const chatroom = await Chatroom.findById(chatroomId); // import Chatroom model at top
-    if (!chatroom) {
-      return res.status(404).json({ success: false, message: "Chatroom not found." });
-    }
-
-    // Add user to members if not already
-    if (!chatroom.members.includes(userId)) {
-      chatroom.members.push(userId);
-      await chatroom.save();
-    }
-
-    return res.json({ success: true });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ success: false, message: "Server error." });
   }
-}
+
 
 
   
