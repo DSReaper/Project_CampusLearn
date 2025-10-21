@@ -7,33 +7,17 @@
     <link rel="stylesheet" href="/css/loginstyles.css" />
     <link rel="stylesheet" href="/css/fab.css" />
     <link rel="alternate icon" href="/icons/favicon.ico" sizes="any" />
+     <link rel="stylesheet" href="/css/dashboard.css" />
   </head>
   <body>
-    <div class="wrap">
-      <div class="card">
-        <h1>Chatrooms</h1>
-        <div id="chatrooms">
-          <!-- Chatrooms content will go here -->
-        </div>
-      </div>
-    </div>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Dashboard</title>
-  <link rel="stylesheet" href="/css/loginstyles.css" />
-  <link rel="stylesheet" href="/css/dashboard.css" />
-</head>
-<body>
+    
   <div class="wrap">
     <div class="card">
-      <h1>CampusLearn Dashboard</h1>
-      <p id="roleMessage">Checking your role...</p>
-
-      <div class="chatroom-container">
+      <h1>Chatrooms</h1>
+     <div class="chatroom-container">
         <% if (chatrooms && chatrooms.length > 0) { %>
           <% chatrooms.forEach(chatroom => { %>
-            <div class="chatroom-card">
+            <div class="chatroom-card" data-id="<%= chatroom._id %>">
               <h2><%= chatroom.name %></h2>
             </div>
           <% }) %>
@@ -43,19 +27,42 @@
       </div>
    </div>
   </div>
+    <!-- Join Chat Popup -->
+  <div id="joinChatPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h2>Join a Chatroom</h2>
+      <input type="text" id="chatroomSearch" placeholder="Enter chatroom name..." />
+      <select id="chatroomResults" size="5"></select>
+      <button id="joinChatBtn">Join</button>
+      <button id="closePopupBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- create Chat Popup
+  <div id="createChatPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h2>Create a Chatroom</h2>
+      <input type="text" id="newChatName" placeholder="Chatroom Name" />
+      <textarea id="newChatDesc" placeholder="Description"></textarea>
+      <button id="createChatBtn">Create</button>
+      <button id="closeCreatePopupBtn">Cancel</button>
+    </div>
+  </div> -->
 
     <!-- Floating Button to Chat Page -->
-    <a href="/chat" class="fab" aria-label="Open Chat" title="Open Chat">
+    <a href="/chat"  class="ai-chatbot-button" class="fab" aria-label="Open Chat" title="Open Chat">
       <!-- Chat bubble icon (inline SVG) -->
-      <svg viewBox="0 0 24 24" class="fab-icon" aria-hidden="true">
+      <!-- <svg viewBox="0 0 24 24" class="fab-icon" aria-hidden="true">
         <path
           d="M21 12c0 4.418-4.03 8-9 8-1.053 0-2.06-.156-3-.445L3 21l1.6-3.2C4.22 16.6 4 15.82 4 15c0-4.418 4.03-8 9-8s8 3.582 8 8Z"
           fill="currentColor"
-        />
-      </svg>
+        /> -->
+      <!-- </svg> -->
+       <img id="aiChatBtn" src="/icons/BCBot.png" alt="AI Chatbot" />
     </a>
 
     <!-- Include the iPhone-style bottom navigation -->
     <%- include('../partials/navbar') %>
+    <script src="/js/dashboard.js"></script>
   </body>
 </html>
