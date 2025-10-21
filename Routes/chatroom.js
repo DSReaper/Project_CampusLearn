@@ -1,6 +1,5 @@
 const express = require('express'); 
 const chatroomRouter = express.Router();
-const auth = require('../MiddleWare/JWTAuth');
 
 //Chatroom imports
 const {
@@ -11,10 +10,10 @@ const {
 } = require('../Controller/chatroomController');
 
 chatroomRouter.get('/api/chatroom', (req, res) => res.render('chatroom'));
-chatroomRouter.get('/api/chatroom/active', auth, getActiveChatrooms);
-chatroomRouter.get('/api/chatroom/messages/:chatroomId', auth, getMessages);
-chatroomRouter.post('/api/chatroom/messages/:chatroomId', auth, sendMessage);
-chatroomRouter.delete('/api/chatroom/messages/:messageId', auth, deleteMessage);
+chatroomRouter.get('/api/chatroom/active', getActiveChatrooms);
+chatroomRouter.get('/api/chatroom/messages/:chatroomId', getMessages);
+chatroomRouter.post('/api/chatroom/messages/:chatroomId', sendMessage);
+chatroomRouter.delete('/api/chatroom/messages/:messageId', deleteMessage);
 
 module.exports = {
   chatroomRouter

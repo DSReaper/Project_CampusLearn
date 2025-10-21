@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const cookieParser = require("cookie-parser");
 
 
 const app = express();
@@ -25,9 +24,6 @@ app.use('/icons', express.static(path.join(__dirname, 'View', 'icons')));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); 
-
-// Cookie parser middleware
-app.use(cookieParser());
 
 // for parsing application/x-www-form-urlencoded
 app.use(express.json());
