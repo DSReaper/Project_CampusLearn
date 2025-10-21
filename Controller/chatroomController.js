@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const ChatroomService = require("../Services/ChatroomService.js");
 const MongoDBConnection = require("../Model/database/connection.js");
+const { session, use } = require("passport");
 
 
 class ChatroomController {
@@ -32,11 +33,20 @@ class ChatroomController {
   async joinChatroom(req, res) {
     let client;
     try {
+      
       const chatroomId = req.params.chatroomId;
-      const userId = req.user?._id;
+      const userId = req.user?._id || req.user?.id || req.session?.userId || req.session?.user?._id || req.session?.user?.id;
 
-      if (!chatroomId) {
-        return res.status(400).json({ success: false, message: "Chatroom ID is required." });
+      console.log(`User ${userId} is attempting to join chatroom ${chatroomId} in controller.`);
+      console.log("Session data:", req.session);
+      console.log("User data from req.user:", req.user);
+
+      if (!chatroomId || chatroomId === undefined || chatroomId === null) {
+        return res.status(400).json({ success: false, message: "Chatroom ID is required." + chatroomId });
+      }
+
+      if (!userId || userId === undefined || userId === null) {
+        return res.status(401).json({ success: false, message: "User must be logged in to join a chatroom.", debug : {session: req.session, user: req.user} });
       }
 
       client = await this.conn.connect();
@@ -67,7 +77,78 @@ class ChatroomController {
         await this.conn.disconnect();
       } catch {}
     }
+  }async joinChatroom(req, res) {
+  let client;
+  try {
+    const chatroomId = req.params.chatroomId;
+    const userId = req.session.user?._id; // Use session user
+
+    console.log(`🔄 Join Chatroom - ChatroomID: ${chatroomId}, UserID: ${userId}`);
+    console.log('Session data:', req.session);
+
+    if (!chatroomId) {
+      return res.status(400).json({ success: false, message: "Chatroom ID is required." });
+    }
+
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "User must be authenticated." });
+    }
+
+    // Validate ObjectId format
+    if (!ObjectId.isValid(chatroomId)) {
+      return res.status(400).json({ success: false, message: "Invalid Chatroom ID format." });
+    }
+
+    if (!ObjectId.isValid(userId)) {
+      return res.status(400).json({ success: false, message: "Invalid User ID format." });
+    }
+
+    client = await this.conn.connect();
+    const db = this.conn.getDatabase();
+    const chatroomsCol = db.collection("chatrooms");
+
+    const chatroom = await chatroomsCol.findOne({ _id: new ObjectId(chatroomId) });
+    if (!chatroom) {
+      return res.status(404).json({ success: false, message: "Chatroom not found." });
+    }
+
+    // Add user to members if not already
+    const isMember = chatroom.members.some(memberId => memberId.toString() === userId.toString());
+    if (!isMember) {
+      await chatroomsCol.updateOne(
+        { _id: new ObjectId(chatroomId) },
+        { 
+          $push: { members: new ObjectId(userId) },
+          $set: { updatedAt: new Date() }
+        }
+      );
+      console.log(`✅ User ${userId} joined chatroom ${chatroomId}`);
+    } else {
+      console.log(`ℹ️ User ${userId} is already a member of chatroom ${chatroomId}`);
+    }
+
+    return res.json({ 
+      success: true, 
+      message: "Successfully joined chatroom",
+      data: {
+        chatroomId: chatroomId,
+        chatroomName: chatroom.name
+      }
+    });
+
+  } catch (err) {
+    console.error("❌ Error in joinChatroom:", err);
+    return res.status(500).json({ success: false, message: "Server error." });
+  } finally {
+    try {
+      if (this.conn) {
+        await this.conn.disconnect();
+      }
+    } catch (disconnectError) {
+      console.error("❌ Error disconnecting:", disconnectError);
+    }
   }
+}
 
 
 

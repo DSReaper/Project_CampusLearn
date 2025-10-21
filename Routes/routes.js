@@ -3,6 +3,7 @@ const { loginUser } = require('../Controller/loginController');
 const { renderChat, chatAPI } = require('../Controller/chatController');
 const { resetPasswordController } = require('../Controller/resetPasswordController');
 const chatroomController = require('../Controller/chatroomController.js');
+const authMiddleware = require('../Middleware/auth.js');
 
 const router = express.Router();
 
@@ -18,11 +19,11 @@ router.post("/reset-password", resetPasswordController);
 
 // Dashboard routes
 router.get(
-  '/student/dashboard',
+  '/student/dashboard', authMiddleware,
   chatroomController.renderDashboard.bind(chatroomController)
 );
-router.get('/profile/settings', (req, res) => res.render('profileSettings'));
-router.get("/tutor/dashboard", (req, res) => res.render("tutorDashboard"));
+router.get('/profile/settings', authMiddleware, (req, res) => res.render('profileSettings'));
+router.get("/tutor/dashboard", authMiddleware, (req, res) => res.render("tutorDashboard"));
 
 //search a chatroom 
 router.get('/chatroom/search', chatroomController.searchChatrooms.bind(chatroomController));
@@ -53,14 +54,14 @@ router.get('/chatroom', async (req, res) => {
 });
 
 // get a  chatroom by id
-router.get('/chatroom/:chatroomId', async (req, res) => {
+router.get('/chatroom/:chatroomId', authMiddleware, async (req, res) => {
   const { chatroomId } = req.params;
   const response = await chatroomController.getChatroom({ params: { chatroomId }, session: req.session });
   res.render('chatroom', { chatroom: response.data });
 });
 
 // create a chatroom (tutors)
-router.post('/chatroomCreate', async (req, res) => {
+router.post('/chatroomCreate', authMiddleware, async (req, res) => {
   const chatroomData = req.body;
   const response = await chatroomController.createChatroom({ body: chatroomData, session: req.session });
   res.json(response); // 
@@ -69,9 +70,7 @@ router.post('/chatroomCreate', async (req, res) => {
 
 // join chatroom (students)
 router.post('/chatroom/:chatroomId/join', async (req, res) => {
-  const { chatroomId } = req.params;
-  const response = await chatroomController.joinChatroom({ params: { chatroomId }, session: req.session });
-  res.json(response); // 
+  chatroomController.joinChatroom(req, res);
 });
 
 // leave a chatroom
@@ -81,6 +80,12 @@ router.post('/chatroom/:chatroomId/leave', async (req, res) => {
   res.json(response); // 
 });
 
-
+router.get('/check-session', (req, res) => {
+  res.json({
+    session: req.session,
+    user: req.user,
+    sessionId: req.sessionID
+  });
+});
 
 module.exports = router;

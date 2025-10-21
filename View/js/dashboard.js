@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Selecting chatroom in popup
   resultsList.addEventListener("change", () => {
     selectedChatroomId = resultsList.value;
+    console.log("Selected chatroom ID:", selectedChatroomId); // Debug log
   });
 
   // Join chatroom
@@ -40,10 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    console.log("Attempting to join chatroom:", selectedChatroomId); // Debug log
+
     try {
       const res = await fetch(`/chatroom/${selectedChatroomId}/join`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
+        credentials: "include" // ✅ ADD THIS - important for sessions
       });
       const data = await res.json();
 
@@ -53,11 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.value = "";
         resultsList.innerHTML = "";
         selectedChatroomId = null;
+        // Optional: reload the page or update UI
+        window.location.reload();
       } else {
         alert(data.message || "Failed to join chatroom.");
       }
     } catch (err) {
       console.error("Error joining chatroom:", err);
+      alert("Error joining chatroom. Please try again.");
     }
   });
 
@@ -78,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch("/chatroom");
       const chatrooms = await res.json();
+      console.log("Loaded chatrooms:", chatrooms); // Debug log
       renderPopupList(chatrooms);
     } catch (err) {
       console.error("Error loading chatrooms for popup:", err);
@@ -96,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatrooms.forEach(chatroom => {
       const option = document.createElement("option");
-      option.value = chatroom._id; // make sure _id matches your DB
-      option.textContent = chatroom.name;
+      option.value = chatroom.id; // ✅ FIXED: use 'id' not '_id'
+      option.textContent = `${chatroom.name} - ${chatroom.description}`; // More descriptive
       resultsList.appendChild(option);
     });
   }
