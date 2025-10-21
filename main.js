@@ -1,11 +1,19 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const socketService = require('./Services/SocketService');
 
 const app = express();
 const router = require('./Routes/routes');
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'default_secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 const MongoDBConnection = require('./Model/database/connection');
 const dbConnection = new MongoDBConnection();

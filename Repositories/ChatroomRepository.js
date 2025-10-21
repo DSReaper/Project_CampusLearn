@@ -161,6 +161,8 @@ class ChatroomRepository extends IChatroomRepository {
       
       const chatroomObjectId = new ObjectId(chatroomId);
       const userObjectId = new ObjectId(userId);
+
+      console.log(`User ${userId} is attempting to join chatroom ${chatroomId} in repository.`);
       
       // First check if chatroom exists and isn't full
       const chatroom = await collection.findOne({ _id: chatroomObjectId });
