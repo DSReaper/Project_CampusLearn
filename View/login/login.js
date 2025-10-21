@@ -24,21 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        headers: { 
+          "Content-Type": "application/json", 
+          "Accept": "application/json" 
+        },
         body: JSON.stringify({ email: emailVal, password: passwordVal }),
+        credentials: "include" // ✅ IMPORTANT: This sends cookies/session
       });
 
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json();
 
-      if (res.ok && data.message === "login") {
-        // 🔐 store tutor flag for this session only
-        if (data.role === "tutor") {
-          sessionStorage.setItem("isTutor", "1");
-        } else {
-          sessionStorage.removeItem("isTutor");
-        }
-        // Always go to student dashboard
-        window.location.assign("/student/dashboard");
+      if (res.ok && data.ok) {
+        console.log("✅ Login successful, redirecting to:", data.redirect);
+        
+        // Use the redirect URL from the server
+        window.location.href = data.redirect;
       } else {
         errorText.textContent = data.error || data.message || "Invalid email or password.";
         errorText.style.display = "block";

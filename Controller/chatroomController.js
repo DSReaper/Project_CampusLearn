@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const ChatroomService = require("../Services/ChatroomService.js");
 const MongoDBConnection = require("../Model/database/connection.js");
+const { session, use } = require("passport");
 
 
 class ChatroomController {
@@ -32,11 +33,20 @@ class ChatroomController {
   async joinChatroom(req, res) {
     let client;
     try {
+      
       const chatroomId = req.params.chatroomId;
-      const userId = req.user?._id;
+      const userId = req.user?._id || req.user?.id || req.session?.userId || req.session?.user?._id || req.session?.user?.id;
 
-      if (!chatroomId) {
-        return res.status(400).json({ success: false, message: "Chatroom ID is required." });
+      console.log(`User ${userId} is attempting to join chatroom ${chatroomId} in controller.`);
+      console.log("Session data:", req.session);
+      console.log("User data from req.user:", req.user);
+
+      if (!chatroomId || chatroomId === undefined || chatroomId === null) {
+        return res.status(400).json({ success: false, message: "Chatroom ID is required." + chatroomId });
+      }
+
+      if (!userId || userId === undefined || userId === null) {
+        return res.status(401).json({ success: false, message: "User must be logged in to join a chatroom.", debug : {session: req.session, user: req.user} });
       }
 
       client = await this.conn.connect();
