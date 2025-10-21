@@ -7,6 +7,13 @@ const authMiddleware = require('../Middleware/auth.js');
 
 const router = express.Router();
 
+router.get("/session", (req, res) => {
+  if (!req.session?.user) {
+    return res.status(401).json({ ok: false, message: "No active session" });
+  }
+  res.json({ ok: true, user: req.session.user });
+});
+
 // Default route — show login page first
 router.get('/', (req, res) => res.render('login'));
 
@@ -39,10 +46,6 @@ router.get('/chatroom/search', chatroomController.searchChatrooms.bind(chatroomC
 // Chatbot routes
 router.get('/chat', renderChat);
 router.post('/api/chat', chatAPI);
-
-
-//map
-
 
 //get chatrooms
 router.get('/chatroom', async (req, res) => {
