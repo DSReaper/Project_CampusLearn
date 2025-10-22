@@ -308,29 +308,49 @@ class ChatroomRepository extends IChatroomRepository {
     try {
       await this.connection.disconnect();
     } catch (error) {
-      console.error("❌ Error disconnecting repository:", error);
+      console.error("Error disconnecting repository:", error);
     }
   }
-  async getMessagesByChatroom(chatroomId) {
-  let collection;
+  async getMessagesByChatroomId(chatroomId) {
   try {
     const db = await this.connection.connect();
-    collection = db.collection("chatmessages"); // separate collection for messages
-
-    const chatroomObjectId = new ObjectId(chatroomId);
-
-    const messages = await collection
-      .find({ chatroomId: chatroomObjectId })
-      .sort({ createdAt: 1 })
+    const messages = await db
+      .collection("ChatRoomChats")
+      .find({ chatroomId })
+      .sort({ createdAt: 1 }) // sort oldest to newest
       .toArray();
 
-    console.log(`✅ Retrieved ${messages.length} messages for chatroom ${chatroomId}`);
     return messages;
-  } catch (error) {
-    console.error("❌ Error fetching messages:", error);
-    throw error;
+  } catch (err) {
+    console.error("ChatroomRepository.getMessagesByChatroomId error:", err);
+    throw err;
   }
 }
+
+
+  async connectChats() {
+    try {
+      const db = await this.connection.connect();
+      return db.collection("chatroomChats"); // messages collection
+    } catch (error) {
+      console.error("ChatroomRepository connectChats failed:", error);
+      throw error;
+    }
+  }
+
+  async addMessage({ chatroomId, userId, body, createdAt }) {
+  try {
+    const db = await this.connection.connect(); // connect to Mongo
+    const message = { chatroomId, userId, body, createdAt };
+
+    const result = await db.collection("ChatRoomChats").insertOne(message);
+    return result.ops ? result.ops[0] : message;
+  } catch (err) {
+    console.error("ChatroomRepository.addMessage error:", err);
+    throw err;
+  }
+}
+
 }
 
 module.exports = ChatroomRepository;

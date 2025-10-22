@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatrooms.forEach(chatroom => {
       const option = document.createElement("option");
-      option.value = chatroom.id; // ✅ FIXED: use 'id' not '_id'
+      option.value = chatroom.id; 
       option.textContent = `${chatroom.name} - ${chatroom.description}`; // More descriptive
       resultsList.appendChild(option);
     });
