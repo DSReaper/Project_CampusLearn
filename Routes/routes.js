@@ -88,6 +88,10 @@ router.post('/chatroom/:chatroomId/leave', async (req, res) => {
   res.json(response); // 
 });
 
+router.get('/logout', (reg,res) => {
+  res.render('login');
+})
+
 router.get('/check-session', (req, res) => {
   res.json({
     session: req.session,
