@@ -8,6 +8,8 @@ class ChatroomController {
   constructor() {
     this.chatroomService = new ChatroomService();
     this.conn = new MongoDBConnection();
+
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   async getAllChatrooms(req, res) {
@@ -200,33 +202,52 @@ class ChatroomController {
     }
   }
   
-  async renderChatroom(req, res) {
-    const chatroomId = req.params.chatroomId;
-    const userId = req.session.user?._id;
+ async renderChatroom(req, res) {
+  const chatroomId = req.params.chatroomId;
+  const userId = req.session.user._id;
 
-    console.log("🔹 renderChatroom called:", { chatroomId, userId });
+  console.log("🔹 renderChatroom called:", { chatroomId, userId });
 
-    try {
-      // ✅ Use "this.chatroomService", not just "chatroomService"
-      const result = await this.chatroomService.getChatroomWithMessages(chatroomId, userId);
-      console.log("getChatroomWithMessages result:", result);
+  try {
+    const result = await this.chatroomService.getChatroomWithMessages(chatroomId, userId);
 
-      if (!result.success) {
-        return res.status(404).send(result.error);
+    if (!result.success) {
+      return res.status(404).send(result.error);
+    }
+
+    res.render("chatroom", {
+      chatroom: result.data,
+      messages: result.data.messages,
+      userId
+    });
+  } catch (error) {
+    console.error("Error rendering chatroom:", error);
+    res.status(500).send("Internal server error");
+  }
+}
+
+  async sendMessage(req, res) {
+      const { chatroomId } = req.params;
+      const { body } = req.body;
+      const userId = req.session.user?._id;
+
+      if (!chatroomId || !body?.trim()) {
+          return res.status(400).json({ success: false, message: "Chatroom ID and message required" });
+      }
+      if (!userId) {
+          return res.status(401).json({ success: false, message: "Login required" });
       }
 
-      res.render("chatroom", { chatroom: result.data, userId });
-    } catch (err) {
-      console.error("❌ Error rendering chatroom:", err);
-      res.status(500).send("Server error");
-    }
+      try {
+          const result = await this.chatroomService.sendMessage(chatroomId, userId, body);
+          res.json(result);
+      } catch (error) {
+          console.error("Error sending message:", error);
+          res.status(500).json({ success: false, error: error.message });
+      }
   }
 
-
-
-
-
-
 }
+
 
 module.exports = new ChatroomController();

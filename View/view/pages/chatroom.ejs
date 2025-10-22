@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= chatroom.name %> - Chatroom</title>
-  <link rel="stylesheet" href="/css/chatroom.css">
+  <link rel="stylesheet" href="/css/chatroomchat.css">
 </head>
 <body>
-  <div class="wrap">
+  <!-- Chatroom container with data attributes -->
+  <div class="wrap" 
+       id="chatroomWrap" 
+       data-chatroom-id="<%= chatroom._id %>" 
+       data-user-id="<%= userId %>">
     <div class="card">
       <h1><%= chatroom.name %></h1>
 
@@ -26,7 +30,7 @@
 
         <div class="input-wrap">
           <div class="input-container">
-            <input type="text" id="msgInput" placeholder="Type a message..." />
+            <input type="text" id="messageInput" placeholder="Type a message..." />
             <button class="send-icon" id="sendBtn">
               <svg viewBox="0 0 24 24">
                 <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
@@ -38,8 +42,9 @@
     </div>
   </div>
 
-  
+  <%- include('../partials/navbar') %>
 
   <script src="/js/chatroom.js"></script>
+  <script src="/js/chatroomchat.js"></script>
 </body>
 </html>

@@ -401,32 +401,42 @@ class ChatroomService {
 
 
   async getChatroomWithMessages(chatroomId, userId) {
-    try {
-      console.log(`🔄 ChatroomService: Getting chatroom ${chatroomId} with messages for user ${userId}`);
+  try {
+    const chatroom = await this.chatroomRepository.getChatroomById(chatroomId);
+    if (!chatroom) {
+      return { success: false, error: "Chatroom not found" };
+    }
 
-      const chatroom = await this.chatroomRepository.getChatroomById(chatroomId, userId);
-      if (!chatroom) {
-        return { success: false, error: "Chatroom not found or access denied", data: null };
+    const messages = await this.chatroomRepository.getMessagesByChatroomId(chatroomId);
+
+    return {
+      success: true,
+      data: {
+        ...chatroom,
+        messages
       }
+    };
+  } catch (err) {
+    console.error("ChatroomService.getChatroomWithMessages error:", err);
+    return { success: false, error: err.message };
+  }
+}
 
-      const messages = await this.chatroomRepository.getMessagesByChatroom(chatroomId);
 
-      return {
-        success: true,
-        data: {
-          id: chatroom._id,
-          name: chatroom.name,
-          members: chatroom.members,
-          messages: messages, // array of messages
-        }
-      };
-    } catch (error) {
-      console.error(" ChatroomService: Error getting chatroom with messages:", error);
-      return { success: false, error: error.message, data: null };
-    } finally {
-      await this.chatroomRepository.disconnect();
+  async sendMessage(chatroomId, userId, body) {
+    try {
+      const message = await this.chatroomRepository.addMessage({
+        chatroomId,
+        userId,
+        body,
+        createdAt: new Date()
+      });
+      return { success: true, data: message };
+    } catch (err) {
+      return { success: false, error: err.message };
     }
   }
+
 }
 
 

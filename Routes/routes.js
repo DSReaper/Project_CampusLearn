@@ -99,5 +99,8 @@ router.get('/check-session', (req, res) => {
 // open a chatroom
 router.get('/chatroom/open/:chatroomId', authMiddleware, chatroomController.renderChatroom.bind(chatroomController));
 
+router.post("/chatroom/:chatroomId/message", (req, res) => chatroomController.sendMessage(req, res));
+
+
 
 module.exports = router;
